@@ -1,0 +1,41 @@
+{{/*
+  Feature comparison card. First product column is highlighted.
+  Column headers via `cols` (pipe-separated). Rows via inner content:
+  Feature | <col1> | <col2> | <col3>  where each value is yes / no,
+  optionally with a qualifier after a colon, e.g. no:needs oiling
+  Usage:
+    {{< shortcode-compare-table cols="Katori (Titanium) | Plastic | Wood" >}}
+    Microplastic-free | yes | no | yes
+    No maintenance needed | yes | yes | no:needs oiling
+    {{< /shortcode-compare-table >}}
+*/}}
+{{ $cols := split (.Get "cols") "|" }}
+<div class="compare-table">
+  <table>
+    <thead>
+      <tr>
+        <th class="compare-table__feature">Feature</th>
+        {{ range $j, $c := $cols }}
+        <th class="{{ if eq $j 0 }}compare-table__hi{{ end }}">{{ trim $c " " | safeHTML }}</th>
+        {{ end }}
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $line := split (trim .Inner "\n") "\n" }}
+        {{ $line = trim $line " " }}
+        {{ if $line }}
+          {{ $cells := split $line "|" }}
+      <tr>
+        <td class="compare-table__feature">{{ trim (index $cells 0) " " | safeHTML }}</td>
+        {{ range $k := seq 1 (sub (len $cells) 1) }}
+          {{ $sub := split (trim (index $cells $k) " ") ":" }}
+          {{ $mark := trim (index $sub 0) " " }}
+          {{ $note := "" }}{{ if gt (len $sub) 1 }}{{ $note = trim (index $sub 1) " " }}{{ end }}
+        <td class="{{ if eq $k 1 }}compare-table__hi {{ end }}{{ if eq $mark "yes" }}is-yes{{ else }}is-no{{ end }}">{{ if eq $mark "yes" }}&#10003;{{ else }}&#10007;{{ end }}{{ with $note }} <span class="compare-table__note">({{ . }})</span>{{ end }}</td>
+        {{ end }}
+      </tr>
+        {{ end }}
+      {{ end }}
+    </tbody>
+  </table>
+</div>

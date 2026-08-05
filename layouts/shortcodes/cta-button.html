@@ -1,0 +1,12 @@
+{{- $href := .Get "href" | default "#" -}}
+{{- $line1 := .Get "line1" -}}
+{{- $line2 := .Get "line2" -}}
+
+<div class="cta-button-wrapper">
+  <a href="{{ $href }}" class="custom-cta-button" role="button">
+    <span class="custom-cta-button-line1">{{ $line1 }}</span>
+    {{- if $line2 -}}
+    <span class="custom-cta-button-line2">{{ $line2 }}</span>
+    {{- end -}}
+  </a>
+</div>

@@ -1,0 +1,3 @@
+{{- /* Inline star rating. Usage: {{< review-rating >}} or {{< review-rating score="4.8" >}} */ -}}
+{{- $r := .Get "score" | default .Page.Params.rating | default "4.9" -}}
+<div class="stars" style="margin:8px 0 16px"><span class="st">★★★★★</span><b>{{ $r }}</b><span class="out">/ 5</span></div>

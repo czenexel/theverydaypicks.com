@@ -1,0 +1,11 @@
+{{- /* airz-only variant of epic-hero: wraps the hero image in an optional
+   tracking link. Identical to epic-hero when no link is set. */ -}}
+{{- $id := .Get "image_id" -}}
+{{- $var := .Get "var" | default "variant0001" -}}
+{{- $src := .Get "img" -}}
+{{- if $id }}{{ $src = printf "https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/%s/%s" $id $var }}{{ end -}}
+{{- $link := .Get "link" -}}
+<div class="hero">
+  {{ if $src }}{{ if $link }}<a href="{{ $link }}" target="_blank" ctr-type-link="external" style="display:block;">{{ end }}<img class="img-slot slot-hero" src="{{ $src }}" alt="{{ .Get "alt" }}" fetchpriority="high">{{ if $link }}</a>{{ end }}{{ else }}<div class="img-slot slot-hero"></div>{{ end }}
+  {{- with .Get "caption" -}}<div class="caption">{{ with $.Get "label" }}<b>{{ . }}</b>{{ end }}{{ . }}</div>{{- end -}}
+</div>

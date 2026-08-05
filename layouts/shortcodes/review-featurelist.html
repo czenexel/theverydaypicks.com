@@ -1,0 +1,7 @@
+{{- /* Diamond-bulleted feature list. Inner = a normal markdown bullet list (use **bold** lead-ins).
+       Usage:
+       {{< review-featurelist >}}
+       - **Non-porous** — nowhere for bacteria to hide.
+       - **No microplastics** — solid metal sheds nothing.
+       {{< /review-featurelist >}} */ -}}
+<div class="featurelist">{{ .Inner | markdownify }}</div>

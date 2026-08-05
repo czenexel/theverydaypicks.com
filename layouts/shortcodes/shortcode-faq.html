@@ -1,0 +1,23 @@
+{{- $d := .Inner | transform.Unmarshal -}}
+<div class="faq06" id="faq">
+  {{- with $d.title }}<h2 class="faq06-title">{{ . }}</h2>{{ end -}}
+  {{- range $d.items -}}
+  <details class="faq06-item">
+    <summary>{{ .q }}</summary>
+    <div class="faq06-ans">{{ .a | safeHTML }}</div>
+  </details>
+  {{- end -}}
+</div>
+<style>
+  .faq06 { max-width: 800px; margin: 1.5rem auto 2rem; padding: 0 1rem; }
+  .faq06-title { margin-bottom: 1.25rem; }
+  .faq06-item { border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 0.75rem; background: #fff; overflow: hidden; }
+  .faq06-item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.05rem; line-height: 1.35; color: #0d244f; }
+  .faq06-item > summary::-webkit-details-marker { display: none; }
+  .faq06-item > summary::after { content: "+"; flex-shrink: 0; font-size: 1.5rem; font-weight: 400; line-height: 1; color: #167ac6; }
+  .faq06-item[open] > summary { border-bottom: 1px solid #e5e7eb; }
+  .faq06-item[open] > summary::after { content: "\2013"; }
+  .faq06-ans { padding: 1rem 1.25rem; font-family: 'Montserrat', sans-serif; font-size: 1.02rem; line-height: 1.65; color: #2a2a2a; }
+  .faq06-ans p { margin: 0 0 0.75rem; }
+  .faq06-ans p:last-child { margin-bottom: 0; }
+</style>

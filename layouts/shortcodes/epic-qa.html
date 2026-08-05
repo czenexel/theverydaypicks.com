@@ -1,0 +1,7 @@
+{{- $d := .Inner | transform.Unmarshal -}}
+<div class="qa" id="faq">
+  <h2>{{ $d.title }}</h2>
+  {{- range $d.items -}}
+  <details><summary>{{ .q }}</summary><div class="ans">{{ .a | safeHTML }}</div></details>
+  {{- end -}}
+</div>

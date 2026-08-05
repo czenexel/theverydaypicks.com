@@ -1,0 +1,22 @@
+{{- /* Pros / cons columns. Lines starting with + are pros, lines starting with - are cons.
+       Usage:
+       {{< review-proscons >}}
+       + Solid titanium — nothing sheds into food
+       + Keeps knives sharp
+       - Costs more upfront than plastic
+       - Only sold online
+       {{< /review-proscons >}} */ -}}
+{{- $pros := slice -}}
+{{- $cons := slice -}}
+{{- range (split (.Inner | strings.TrimSpace) "\n") -}}
+  {{- $l := strings.TrimSpace . -}}
+  {{- if strings.HasPrefix $l "+" -}}
+    {{- $pros = $pros | append (strings.TrimSpace (strings.TrimPrefix "+" $l)) -}}
+  {{- else if strings.HasPrefix $l "-" -}}
+    {{- $cons = $cons | append (strings.TrimSpace (strings.TrimPrefix "-" $l)) -}}
+  {{- end -}}
+{{- end -}}
+<div class="proscons">
+  <div class="col pros"><div class="h">Pros</div><ul>{{ range $pros }}<li>{{ . | safeHTML }}</li>{{ end }}</ul></div>
+  <div class="col cons"><div class="h">Cons</div><ul>{{ range $cons }}<li>{{ . | safeHTML }}</li>{{ end }}</ul></div>
+</div>

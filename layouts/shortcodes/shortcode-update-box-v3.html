@@ -1,0 +1,14 @@
+<div class="overallbox" style="margin-bottom: 20px;">
+    <div class="blue-box">
+        <p>{{ .Get "param1" }}</p>
+      </div>
+      <div class="yellow-box">
+        {{ range $index := seq 2 6 }} <!-- Adjust the range as needed -->
+            {{ $param := printf "param%d" $index }}
+            {{ with $.Get $param }}
+                <p style="margin-bottom: 15px;">{{ . }}</p>
+            {{ end }}
+        {{ end }}
+      </div>
+    </div>
+      

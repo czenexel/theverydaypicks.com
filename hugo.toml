@@ -1,0 +1,11 @@
+baseURL = 'https://theverydaypicks.com/'
+languageCode = 'en-us'
+title = 'theverydaypicks.com'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[minify]
+  minifyOutput = true

@@ -1,0 +1,20 @@
+<div class="article-container">
+    <article>
+        <img src="https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/{{ .Get "article_image_01" }}/{{ .Get "size" }}" loading="lazy" alt="article 1" />
+        <h3>{{ .Get "article_headline_01" }}</h3>
+        <p>{{ .Get "article_description_01" }}</p>
+        <a href="{{ "/blog/" | absURL }}{{ .Get "article_url_01" }}">{{ .Get "cta_text" }}</a>
+    </article>
+    <article>
+        <img src="https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/{{ .Get "article_image_02" }}/{{ .Get "size" }}" loading="lazy" alt="article 2" />
+        <h3>{{ .Get "article_headline_02" }}</h3>
+        <p>{{ .Get "article_description_02" }}</p>
+        <a href={{ "/blog/" | absURL }}{{ .Get "article_url_02" }}>{{ .Get "cta_text" }}</a>
+    </article>
+    <article>
+        <img src="https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/{{ .Get "article_image_03" }}/{{ .Get "size" }}" loading="lazy" alt="article 3" />
+        <h3>{{ .Get "article_headline_03" }}</h3>
+        <p>{{ .Get "article_description_03" }}</p>
+        <a href="{{ "/blog/" | absURL }}{{ .Get "article_url_03" }}">{{ .Get "cta_text" }}</a>
+    </article>
+</div>

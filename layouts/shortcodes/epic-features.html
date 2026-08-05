@@ -1,0 +1,6 @@
+{{- $d := .Inner | transform.Unmarshal -}}
+<div class="features">
+{{- range $d.items -}}
+  <div class="ft"><div class="ic">✓</div><div><b>{{ .title }}</b>{{ with .sub }}<span class="k">{{ . }}</span>{{ end }}</div></div>
+{{- end -}}
+</div>

@@ -1,0 +1,10 @@
+{{- $href := .Get "href" | default "#" -}}
+{{- $line1 := .Get "line1" -}}
+{{- $line2 := .Get "line2" -}}
+
+<div class="cta-button-wrapper">
+   <a href="javascript:void(0);" onclick="openQuiz()" class="custom-cta-button">
+      {{ with .Get "line1" }}<span class="custom-cta-button-line1">{{ . }}</span>{{ end }}
+      {{ with .Get "line2" }}<span class="custom-cta-button-line2">{{ . }}</span>{{ end }}
+   </a>
+</div>

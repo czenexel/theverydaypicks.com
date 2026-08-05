@@ -1,0 +1,6 @@
+<div class="byline">
+  <div class="who"><div class="av">{{ .Get "initials" | default "HC" }}</div>
+    <div><div class="author">{{ .Get "author" }}</div><div class="section">{{ .Get "section" }}</div></div>
+  </div>
+  {{- with .Get "rating" -}}<div class="stars"><span class="s">{{ . }}</span>{{ with $.Get "reviews" }}<b>{{ . }}</b>{{ end }}</div>{{- end -}}
+</div>

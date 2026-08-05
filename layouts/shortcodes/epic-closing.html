@@ -1,0 +1,7 @@
+{{- $d := .Inner | transform.Unmarshal -}}
+{{- $href := $d.href | default .Page.Params.HrefCTA | default "#" -}}
+<div class="closing">
+  <div class="lines">{{ range $i, $l := $d.lines }}<span{{ if eq (add $i 1) (len $d.lines) }} class="last"{{ end }}>{{ $l }}</span>{{ end }}</div>
+  <div class="cta"><a class="btn" href="{{ $href }}" target="_blank" rel="noopener">{{ $d.cta | default "Ver disponibilidad" }} <span class="arrow">›</span></a></div>
+  {{ with $d.trust }}<div class="trustrow">{{ range . }}<span><span class="ok">✓</span> {{ . }}</span>{{ end }}</div>{{ end }}
+</div>

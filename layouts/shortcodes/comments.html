@@ -1,0 +1,15 @@
+{{- /* Comment thread from a data file or page front matter.
+   {{< comments key="oz-de-tb3" >}}  -> data/comments/oz-de-tb3.yaml
+   {{< comments >}}                  -> page front-matter param 'comments'
+   For comments written inline at this spot, use {{< comments-inline >}}…{{< /comments-inline >}}. */ -}}
+{{- $key := .Get "key" | default (.Get 0) -}}
+{{- $d := "" -}}
+{{- if $key -}}
+  {{- $d = index site.Data.comments $key -}}
+{{- else -}}
+  {{- $d = .Page.Params.comments -}}
+{{- end -}}
+{{- if not $d -}}
+  {{- errorf "comments shortcode: provide key=\"<datafile>\" or a page front-matter param 'comments' (page %s)" .Page.Path -}}
+{{- end -}}
+{{- partial "comments-render.html" (dict "data" $d "page" .Page) -}}

@@ -1,0 +1,7 @@
+{{- $href := .Get "href" | default .Page.Params.HrefCTA | default "#" -}}
+<div class="cta cta--full">
+  <a class="btn" href="{{ $href }}" target="_blank" rel="noopener">{{ .Get "text" | default "Ver disponibilidad" }}{{ with .Get "arrow" | default "›" }} <span class="arrow">{{ . }}</span>{{ end }}</a>
+</div>
+{{- with .Get "trust" -}}
+<div class="trustrow">{{- range (split . "|") -}}<span><span class="ok">✓</span> {{ . }}</span>{{- end -}}</div>
+{{- end -}}

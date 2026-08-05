@@ -1,0 +1,19 @@
+{{- /* FAQ list. Alternate lines starting with Q: and A:
+       Usage:
+       {{< review-faq >}}
+       Q: Is titanium really food-safe?
+       A: Yes. Titanium is inert and biocompatible.
+       Q: Will it dull my knives?
+       A: No. Its surface is gentle on blades.
+       {{< /review-faq >}} */ -}}
+<h2>{{ .Get "title" | default "Frequently Asked Questions" }}</h2>
+{{- $q := "" -}}
+{{- range (split (.Inner | strings.TrimSpace) "\n") -}}
+  {{- $l := strings.TrimSpace . -}}
+  {{- if strings.HasPrefix $l "Q:" -}}
+    {{- $q = strings.TrimSpace (strings.TrimPrefix "Q:" $l) -}}
+  {{- else if strings.HasPrefix $l "A:" -}}
+    {{- $a := strings.TrimSpace (strings.TrimPrefix "A:" $l) -}}
+    <div class="faq"><div class="q">{{ $q }}</div><div class="a"><p>{{ $a | safeHTML }}</p></div></div>
+  {{- end -}}
+{{- end -}}

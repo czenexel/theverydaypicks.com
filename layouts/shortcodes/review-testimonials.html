@@ -1,0 +1,15 @@
+{{- /* Testimonial cards. One per line: Name | quote text
+       Usage:
+       {{< review-testimonials >}}
+       Lisa P., verified buyer | Genuinely a game-changer.
+       John L., verified buyer | The most practical board I've owned.
+       {{< /review-testimonials >}} */ -}}
+<div class="testis">
+{{- range (split (.Inner | strings.TrimSpace) "\n") -}}
+  {{- $l := strings.TrimSpace . -}}
+  {{- if strings.Contains $l "|" -}}
+    {{- $p := split $l "|" -}}
+    <div class="t"><div class="s">★★★★★</div><p>{{ (index $p 1) | strings.TrimSpace | safeHTML }}</p><div class="n">{{ (index $p 0) | strings.TrimSpace }}</div></div>
+  {{- end -}}
+{{- end -}}
+</div>

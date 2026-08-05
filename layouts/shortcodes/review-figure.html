@@ -1,0 +1,5 @@
+{{- /* Product image (links to the offer by default). Usage: {{< review-figure image="IMAGE_ID" >}} */ -}}
+{{- $base := "https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/" -}}
+{{- $v := .Get "variant" | default "variant0001" -}}
+{{- $link := .Get "link" | default .Page.Params.ctaUrl -}}
+<div class="figure">{{ if $link }}<a href="{{ $link }}">{{ end }}<img src="{{ $base }}{{ .Get "image" }}/{{ $v }}" alt="{{ .Get "alt" | default $.Page.Title }}">{{ if $link }}</a>{{ end }}</div>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "DE" }}">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MK2F4SB8');
+   </script>
+   <link rel="icon" type="image/x-icon" href="/fav_tr.ico">
+   <title>{{ .Title }}</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+   <style>
+      :root {
+      --font-primary: 'Montserrat', sans-serif;
+      --color-text: #111111;
+      --color-text-soft: #000000;
+      --color-heading: #333333;
+      --color-link: #167ac6;
+      --color-background: #fff;
+      --color-footer-bg: #1b1b1b;
+      --color-footer-text: #ffffff;
+      --color-border: #e5e7eb;
+      --color-success: #008c00;
+      --color-success-gradient-start: #4ba614;
+      --color-success-border: #34740e;
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid var(--color-border); }
+      html { line-height: 1.7; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+      body { font-family: var(--font-primary); font-size: 1rem; font-weight: 400; color: var(--color-text); background-color: var(--color-background); min-width: 320px; min-height: 100vh; }
+      h1, h2, h3, h4, h5, h6 { font-family: var(--font-primary); color: var(--color-heading); font-weight: 700; line-height: 1.2; margin-top: 2rem; margin-bottom: 1.5rem; }
+      h2 { font-size: 1.625rem; }
+      p { margin-bottom: 1.5rem; }
+      a { color: var(--color-link); font-weight: 700; text-decoration: underline; transition: all 0.3s ease; }
+      a:hover { text-decoration: none; }
+      img { display: block; max-width: 100%; height: auto; }
+      .page-container { margin: 0 auto; display: flex; flex-direction: column; min-height: 100vh; }
+      .content-wrapper { display: flex; width: 100%; margin: 0 auto; padding-bottom: 3rem; flex-grow: 1; }
+      .main-content { flex: 1; width: 100%; }
+      .article { color: var(--color-text-soft); font-weight: 400; padding: 0 1rem; max-width: 800px; margin: 0 auto; }
+      .article-brand-header {
+      padding-top: 1.80rem;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      }
+      .article-logo {
+      max-width: 200px;
+      height: auto;
+      flex-shrink: 0;
+      }
+      .brand-divider {
+      width: 1px;
+      height: 18px;
+      background-color: #ccc;
+      margin: 0 7px;
+      flex-shrink: 0;
+      }
+      .country-badge {
+      font-family: var(--font-primary);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #0d244f;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1;
+      }
+      .category-tag {
+      font-family: var(--font-primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #167ac6;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1;
+      margin-left: 6px;
+      }
+      .article-meta {
+      font-size: 0.875rem;
+      line-height: 1.2;
+      color: #888888;
+      margin-bottom: 0.95rem;
+      }
+      .article__title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-top: 1rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+      color: #0d244f;
+      }
+      .article-subtitle {
+      font-size: 1.075rem;
+      color: #333333;
+      font-weight: 400;
+      line-height: 1.6;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+      }
+      .article__content p { padding: 0; font-size: 1.075rem; line-height: 1.65; color: #2a2a2a; }
+      .custom-author-info { display: flex; align-items: center; margin-bottom: 1rem; line-height: 1.3;}
+      .custom-author-info img { width: 40px; height: 40px; border-radius: 50%; margin-right: 12px; }
+      .custom-author-details { font-size: 0.9375rem; }
+      .custom-author-name { font-weight: bold; display: flex; align-items: center; color: #111; }
+      .custom-author-name .verified-check { width: 1rem; height: 1rem; margin-left: 6px; }
+      .custom-author-date { color: #666; margin-top: 2px; font-size: 0.85rem; }
+      .sticky-cta { position: fixed; bottom: 0; left: 0; width: 100%; padding: 0.85rem 0; background-image: linear-gradient(180deg, var(--color-success-gradient-start), var(--color-success)); border-top: 1px solid var(--color-success-border); color: white; font-family: var(--font-primary); font-weight: 700; font-size: 1.25rem; text-align: center; text-decoration: none; opacity: 0; transition: opacity 0.5s ease-in-out; display: none; z-index: 9999; }
+      .page-footer { background-color: var(--color-footer-bg); color: var(--color-footer-text); padding: 2.5rem 1rem; font-size: 1rem; }
+      .footer-container { max-width: 800px; margin: 0 auto; text-align: center; }
+      .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 1.5rem; margin-bottom: 2rem; }
+      .footer-link { color: var(--color-footer-text); font-weight: 400; text-decoration: none; opacity: 0.7; transition: opacity 0.3s ease; }
+      .footer-link:hover { text-decoration: underline; opacity: 1; }
+      .footer-copyright { font-size: 0.875rem; opacity: 0.6; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1.5rem; margin-top: 1.5rem; }
+      .advertorial-top-banner { width: 100%; text-align: center; font-size: 0.6rem; color: #8e8e8e; padding: 4px 0; text-transform: uppercase; letter-spacing: 1px; background-color: #fcfcfc; border-bottom: 1px solid #eee; }
+      @media (max-width: 769px) { .sticky-cta { display: block; } .article-logo { max-width: 160px; } .brand-divider { height: 14px; margin: 0 6px; } .country-badge { font-size: 0.5rem; } .category-tag { font-size: 0.65rem; } .article-brand-header { padding-top: 1.85rem; margin-bottom: 0.95rem; } .advertorial-top-banner { font-size: 0.55rem; padding: 2px 0; letter-spacing: 0.5px; color: #a8a8a8; } }
+      @media (min-width: 770px) {
+      .article__title { font-size: 2.375rem; }
+      .article-subtitle { font-size: 1.10rem; }
+      }
+      .custom-cta-button {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #55b718;
+      color: #ffffff;
+      padding: 20px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+      margin: 1.5rem 0;
+      transition: background-color 0.3s ease;
+      min-height: 40px;
+      }
+      .custom-cta-button:hover {
+      background-color: #50ad17;
+      }
+      .custom-cta-button span {
+      display: block;
+      line-height: 1.23;
+      }
+      .custom-cta-button-line1 {
+      font-size: 1.55em;
+      font-weight: 700;
+      }
+      .custom-cta-button-line2 {
+      font-size: 1.15em;
+      margin-top: 5px;
+      font-weight: 500;
+      }
+      .cta-button-wrapper {
+      text-align: center;
+      }
+      .testimonial-container-custom {
+      width: 100%;
+      box-sizing: border-box;
+      }
+      .testimonial-box-custom {
+      background-color: #f8f9fa;
+      padding: 25px 30px;
+      margin-bottom: 1.25rem;
+      border-radius: 4px;
+      position: relative;
+      border-left: 3px solid #dee2e6;
+      }
+      .testimonial-text-custom {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #212529;
+      line-height: 1.6;
+      margin: 0 0 1rem 0;
+      }
+      .testimonial-author-custom {
+      font-size: 1rem;
+      color: #495057;
+      margin: 0;
+      }
+      .testimonial-author-custom strong {
+      font-weight: 700;
+      color: #000;
+      }
+      .img-link-block { display: block; margin: 1.25rem 0 1.5rem 0; text-decoration: none; }
+      .content-img{
+      min-width: 100%;
+      max-width: 100%;
+      }
+      .content-img.content-img-full{
+      max-height: none;
+      }
+      .disclaimer-section {
+      font-size: 0.6rem;
+      text-align: center;
+      margin-top: 2.5rem;
+      color: #6c757d;
+      line-height: 1;
+      }
+      .disclaimer-section p {
+      font-size: inherit;
+      margin-bottom: 0.5rem;
+      }
+      .disclaimer-section a {
+      font-weight: 400;
+      word-break: break-all;
+      }
+      .disclaimer-section strong {
+      font-weight: 600;
+      color: inherit;
+      }
+      .offer-box{
+      border: 7px dashed #f3e40b;
+      padding: 0px 25px 0px 25px;
+      }
+      ul {
+  padding-left: 17px;
+}
+      ol {
+  padding-left: 20px;
+}
+      ol li {
+  padding-left: 4px;
+  margin-bottom: 0.75rem;
+}
+
+      /* --- problem-table shortcode --- */
+      .problem-table {
+        border: 1px solid #e2e2e2;
+        border-radius: 12px;
+        padding: 6px 32px;
+        margin: 32px 0;
+      }
+      .problem-table__title {
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        font-size: 1.05em;
+        padding: 20px 0 8px;
+      }
+      .problem-table__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid #ededed;
+      }
+      .problem-table__row:last-child {
+        border-bottom: none;
+      }
+      .problem-table__label {
+        color: #555;
+      }
+      .problem-table__value {
+        color: #c0392b;
+        font-weight: 700;
+        text-align: right;
+      }
+
+      /* --- compare-table shortcode --- */
+      .compare-table {
+        border: 1px solid #e2e2e2;
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 32px 0;
+      }
+      .compare-table table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95em;
+      }
+      .compare-table th {
+        padding: 14px 10px;
+        font-weight: 700;
+        text-align: center;
+        background: #f7f7f7;
+      }
+      .compare-table th.compare-table__feature,
+      .compare-table td.compare-table__feature {
+        text-align: left;
+        padding-left: 18px;
+        color: #444;
+      }
+      .compare-table th.compare-table__hi {
+        background: #eef6f0;
+        color: #1f7a44;
+      }
+      .compare-table td {
+        padding: 13px 10px;
+        text-align: center;
+        border-top: 1px solid #ededed;
+        color: #444;
+      }
+      .compare-table td.is-yes {
+        color: #1f9d57;
+        font-weight: 700;
+      }
+      .compare-table td.is-no {
+        color: #c0392b;
+        font-weight: 700;
+      }
+      .compare-table td.compare-table__hi {
+        background: #f6fbf8;
+      }
+      .compare-table__note {
+        font-weight: 400;
+        font-size: 0.85em;
+        color: #c0392b;
+      }
+   </style>
+</head>
+<body>
+   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK2F4SB8"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+   <div class="page-container">
+      {{ if .Params.advertorialDisclosure }}
+      <div class="advertorial-top-banner">
+         {{ .Params.advertorialDisclosure }}
+      </div>
+      {{ end }}
+      <div class="content-wrapper">
+         <main class="main-content">
+            <article class="article">
+               <header class="article__header">
+                  <div class="article-brand-header">
+                     <img src="https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/dab9a445-97be-4ce3-f04a-7ca6350c0b00/logo" alt="TrendReporter24" class="article-logo">
+                     {{ with .Params.countryName }}
+                     <div class="brand-divider"></div>
+                     <span class="country-badge">{{ . }}</span>
+                     {{ end }}
+                     {{ with .Params.categoryTag }}
+                     <span class="category-tag">{{ . }}</span>
+                     {{ end }}
+                  </div>
+                  <h1 class="article__title">{{ .Title }}</h1>
+                  {{ with .Params.subtitle }}
+                  <p class="article-subtitle">{{ . }}</p>
+                  {{ end }}
+               </header>
+               <section class="article__content">
+                  {{ if .Params.authorName }}
+                  <div class="custom-author-info">
+                     {{ with .Params.authorImage }}<img src="{{ . }}" alt="{{ $.Params.authorName }}">{{ end }}
+                     <div class="custom-author-details">
+                        <div class="custom-author-name">
+                           {{ .Params.authorName }}
+                           {{ if .Params.authorVerified }}
+                           <svg class="verified-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 21a9 9 0 100-18 9 9 0 000 18zm-.707-5.707l6-6-1.414-1.414-5.293 5.293-2.293-2.293-1.414 1.414 3 3 .707.707.707-.707z" fill="#00c47b"></path>
+                           </svg>
+                           {{ end }}
+                        </div>
+                        <div class="custom-author-date">{{ .Params.verified }}</div>
+                     </div>
+                  </div>
+                  {{ end }}
+                  {{ .Content }}
+                  {{ with .Params.disclaimer }}
+                  <div class="disclaimer-section">
+                     {{ . | $.Page.RenderString }}
+                  </div>
+                  {{ end }}
+               </section>
+            </article>
+         </main>
+      </div>
+      <footer id="footer" class="page-footer">
+         <div class="footer-container">
+            <nav class="footer-nav">
+               {{ range .Params.footerLinks }}
+               <a href="{{ .url }}" class="footer-link">{{ .text }}</a>
+               {{ end }}
+            </nav>
+            <div class="footer-copyright">
+               &copy; {{ now.Format "2006" }} {{ .Site.Title }}. All Rights Reserved.
+            </div>
+         </div>
+      </footer>
+   </div>
+   {{ with .Params.stickyButtonText }}
+   <a href="{{ $.Params.HrefCTA | default "#" }}" target="_blank" id="stickyButtonX" class="sticky-cta">{{ . }}</a>
+   {{ end }}
+   <script>
+      window.onscroll = function() {
+         if (window.innerWidth > 769) return;
+         var mobileButton = document.getElementById("stickyButtonX");
+         if (!mobileButton) return;
+         var footer = document.getElementById("footer");
+         var scrollThreshold = {{ .Params.scrollThreshold | default 3200 }};
+         var bufferSpace = 150;
+         var footerOffset = footer.offsetTop - window.innerHeight - bufferSpace;
+         if (window.scrollY > scrollThreshold && window.scrollY < footerOffset) {
+            mobileButton.style.opacity = 1;
+         } else {
+            mobileButton.style.opacity = 0;
+         }
+      };
+   </script>
+</body>
+</html>

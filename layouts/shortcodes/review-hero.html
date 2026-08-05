@@ -1,0 +1,27 @@
+{{- /* Hero rating box. Inner = intro paragraph(s) + a bullet list of features (rendered as checkmarks).
+       Usage:
+       {{< review-hero image="IMAGE_ID" rating="4.9" >}}
+       Intro paragraph here...
+
+       - Feature one
+       - Feature two
+       {{< /review-hero >}} */ -}}
+{{- $base := "https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/" -}}
+{{- $cta := .Get "cta" | default .Page.Params.ctaUrl -}}
+{{- $txt := .Get "text" | default .Page.Params.ctaText | default "See The Lowest Price" -}}
+{{- $sub := .Get "sub" | default .Page.Params.ctaSub | default "Official site · lowest price" -}}
+{{- $r := .Get "rating" | default .Page.Params.rating | default "4.9" -}}
+{{- $verdict := .Get "verdict" | default "Exceptional" -}}
+<div class="hero">
+  <div class="top">
+    {{ with .Get "image" }}<div class="ph"><a href="{{ $cta }}"><img src="{{ $base }}{{ . }}/variant0001" alt="{{ $.Page.Title }}"></a></div>{{ end }}
+    <div class="info">
+      <div class="rate">
+        <div class="rate-num"><span class="n">{{ $r }}</span><span class="of">/ 5</span></div>
+        <div class="rate-meta"><span class="rate-stars">★★★★★</span><span class="rate-badge">{{ $verdict }}</span></div>
+      </div>
+      {{ .Inner | markdownify }}
+    </div>
+  </div>
+  <div class="cta-wrap"><a class="cta" href="{{ $cta }}">{{ $txt }}<span class="sub">{{ $sub }}</span></a></div>
+</div>

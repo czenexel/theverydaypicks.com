@@ -1,0 +1,20 @@
+{{- /*
+  ELF native ads widget shortcode.
+
+  Copy this file into each Hugo site at layouts/shortcodes/native-ads.html
+  and change $site below to that site's id (one hardcoded value per site).
+
+  Usage:
+    {{< native-ads placement="mid-article" product="epic" geo="de" count="2" >}}
+    {{< native-ads placement="article-bottom" product="epic" geo="de" count="3" >}}
+*/ -}}
+{{- $site := "theverydaypicks.com" -}}
+<div
+  class="elf-native-ads"
+  data-placement="{{ .Get "placement" | default "article-bottom" }}"
+  data-product="{{ .Get "product" }}"
+  data-geo="{{ .Get "geo" }}"
+  data-count="{{ .Get "count" | default "3" }}"
+  data-site="{{ $site }}">
+</div>
+<script async src="https://ads.elfmedia.org/widget.js"></script>

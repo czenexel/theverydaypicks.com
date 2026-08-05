@@ -1,0 +1,22 @@
+{{/*
+  Bordered "problems" card. Title via param, rows via inner content.
+  One row per line: Label | Value
+  Usage:
+    {{< shortcode-problem-table title="Chopping Board Materials — The Problems" >}}
+    Plastic (PE/PP) | Releases up to 50g microplastics/year
+    Wood / Bamboo | Harbours bacteria, mould, needs oiling
+    {{< /shortcode-problem-table >}}
+*/}}
+<div class="problem-table">
+  {{ with .Get "title" }}<div class="problem-table__title">{{ . }}</div>{{ end }}
+  {{ range $line := split (trim .Inner "\n") "\n" }}
+    {{ $line = trim $line " " }}
+    {{ if $line }}
+      {{ $parts := split $line "|" }}
+      <div class="problem-table__row">
+        <span class="problem-table__label">{{ trim (index $parts 0) " " | safeHTML }}</span>
+        <span class="problem-table__value">{{ trim (index $parts 1) " " | safeHTML }}</span>
+      </div>
+    {{ end }}
+  {{ end }}
+</div>

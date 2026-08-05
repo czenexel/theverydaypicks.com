@@ -1,0 +1,18 @@
+{{- /* Percentage rating bars. One per line: Label | 98
+       Usage:
+       {{< review-scorecard title="Our Rating Breakdown" >}}
+       Overall Rating | 98
+       Hygiene & Safety | 99
+       Durability | 99
+       {{< /review-scorecard >}} */ -}}
+<div class="scorecard"><div class="sc-h">{{ .Get "title" | default "Our Rating Breakdown" }}</div>
+{{- range (split (.Inner | strings.TrimSpace) "\n") -}}
+  {{- $l := strings.TrimSpace . -}}
+  {{- if strings.Contains $l "|" -}}
+    {{- $p := split $l "|" -}}
+    {{- $lbl := index $p 0 | strings.TrimSpace -}}
+    {{- $pct := index $p 1 | strings.TrimSpace -}}
+    <div class="score-row"><span class="lbl">{{ $lbl | safeHTML }}</span><span class="bar"><i style="width:{{ $pct }}%"></i></span><span class="pct">{{ $pct }}%</span></div>
+  {{- end -}}
+{{- end -}}
+</div>

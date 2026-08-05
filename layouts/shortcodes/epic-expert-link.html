@@ -1,0 +1,17 @@
+{{- /* airz-only variant of epic-expert: the portrait links to the CTA. */ -}}
+{{- $d := .Inner | transform.Unmarshal -}}
+{{- $var := $d.var | default "variant0001" -}}
+{{- $src := $d.img -}}
+{{- if $d.image_id }}{{ $src = printf "https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/%s/%s" $d.image_id $var }}{{ end -}}
+{{- $link := $d.link | default .Page.Params.HrefCTA -}}
+<div class="expert">
+  {{ if $src }}{{ if $link }}<a href="{{ $link }}" target="_blank" ctr-type-link="external" style="display:block;">{{ end }}<img class="img-slot slot-expert" src="{{ $src }}" alt="{{ $d.name }}" loading="lazy">{{ if $link }}</a>{{ end }}{{ else }}<div class="img-slot slot-expert"></div>{{ end }}
+  <div class="text">
+    {{ with $d.kicker }}<div class="kicker">{{ . }}</div>{{ end }}
+    <h3>{{ $d.name }}</h3>
+    {{ with $d.role }}<div class="role">{{ . }}</div>{{ end }}
+    {{ range $d.quotes }}<blockquote>{{ . }}</blockquote>{{ end }}
+    {{ with $d.signature }}<div class="sig">{{ . }}</div>{{ end }}
+    {{ with $d.signName }}<div class="name">{{ . }}</div>{{ end }}
+  </div>
+</div>

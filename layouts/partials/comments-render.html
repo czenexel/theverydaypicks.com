@@ -1,0 +1,66 @@
+{{- /* Renders an FB-style comment thread.
+   Context: dict "data" <thread-map> "page" <page>.
+   Used by the comments and comments-inline shortcodes. */ -}}
+{{- $d := .data -}}
+{{- $p := .page -}}
+{{- $verified := $d.verifiedText | default "Verified purchase" -}}
+{{- $like := $d.likeText | default "Like" -}}
+{{- $reply := $d.replyText | default "Reply" -}}
+{{- $palette := slice "#0a66c2" "#e0457b" "#1f9d57" "#d9831a" "#7b4fd4" "#178a8a" "#c0392b" "#4a5f8a" "#b3503e" "#2d7d46" -}}
+{{- if not ($p.Store.Get "fcCommentsCSS") -}}
+{{- $p.Store.Set "fcCommentsCSS" true -}}
+<style>
+.fc-comments { display: block; max-width: 680px; margin: 32px auto; padding: 18px 16px; background: #fff; color: #050505; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 15px; line-height: 1.4; text-align: left; box-sizing: border-box; }
+.fc-comments *, .fc-comments *::before, .fc-comments *::after { box-sizing: border-box; }
+.fc-comments .fc-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 18px; }
+.fc-comments .fc-header-title { font-size: 17px; font-weight: 700; color: #050505; }
+.fc-comments .fc-header-sort { font-size: 13px; font-weight: 600; color: #65676b; cursor: pointer; }
+.fc-comments .fc-comment { display: flex; align-items: flex-start; gap: 8px; margin: 0 0 12px; }
+.fc-comments .fc-avatar { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 14px; letter-spacing: 0.3px; text-transform: uppercase; user-select: none; }
+.fc-comments .fc-body { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; max-width: calc(100% - 44px); }
+.fc-comments .fc-bubble { position: relative; display: inline-block; background: #f0f2f5; border-radius: 18px; padding: 8px 12px; max-width: 100%; margin-bottom: 2px; }
+.fc-comments .fc-name { font-size: 13px; font-weight: 600; color: #050505; margin-right: 5px; }
+.fc-comments .fc-verified { display: inline-flex; align-items: center; gap: 2px; font-size: 11px; font-weight: 600; color: #1877f2; white-space: nowrap; }
+.fc-comments .fc-verified::before { content: "✓"; font-weight: 800; font-size: 10px; }
+.fc-comments .fc-text { display: block; font-size: 15px; color: #050505; line-height: 1.38; word-wrap: break-word; overflow-wrap: anywhere; margin-top: 1px; }
+.fc-comments .fc-likes { position: absolute; right: -4px; bottom: -10px; display: inline-flex; align-items: center; gap: 2px; background: #fff; border-radius: 11px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); padding: 1px 5px; font-size: 11px; font-weight: 500; color: #65676b; }
+.fc-comments .fc-actions { display: flex; align-items: center; gap: 14px; padding: 4px 12px 0; font-size: 12px; line-height: 1; }
+.fc-comments .fc-act { font-weight: 700; color: #65676b; cursor: pointer; }
+.fc-comments .fc-time { font-weight: 400; color: #8a8d91; }
+.fc-comments .fc-replies { display: block; margin: 8px 0 0 44px; }
+.fc-comments .fc-replies .fc-avatar { width: 28px; height: 28px; font-size: 12px; }
+.fc-comments .fc-replies .fc-body { max-width: calc(100% - 36px); }
+@media (max-width: 600px) { .fc-comments { padding: 14px 12px; margin: 24px auto; } .fc-comments .fc-replies { margin-left: 30px; } }
+</style>
+{{- end }}
+<div class="fc-comments">
+<div class="fc-header"><span class="fc-header-title">{{ $d.title }}</span>{{ with $d.sortText }}<span class="fc-header-sort">{{ . }}</span>{{ end }}</div>
+{{ range $d.threads }}
+{{- $parts := split .name " " -}}
+{{- $ini := upper (substr (index $parts 0) 0 1) -}}
+{{- if gt (len $parts) 1 }}{{- $ini = printf "%s%s" $ini (upper (substr (index $parts 1) 0 1)) -}}{{- end -}}
+<div class="fc-comment">
+<div class="fc-avatar" style="background:{{ index $palette (mod (hash.FNV32a .name) (len $palette)) }}">{{ $ini }}</div>
+<div class="fc-body">
+<div class="fc-bubble"><span class="fc-name">{{ .name }}</span>{{ if .verified }}<span class="fc-verified">{{ $verified }}</span>{{ end }}<span class="fc-text">{{ .text }}</span>{{ with .likes }}<span class="fc-likes">👍 {{ . }}</span>{{ end }}</div>
+<div class="fc-actions"><span class="fc-act">{{ $like }}</span><span class="fc-act">{{ $reply }}</span><span class="fc-time">{{ .time }}</span></div>
+</div>
+</div>
+{{- with .replies }}
+<div class="fc-replies">
+{{- range . }}
+{{- $rparts := split .name " " -}}
+{{- $rini := upper (substr (index $rparts 0) 0 1) -}}
+{{- if gt (len $rparts) 1 }}{{- $rini = printf "%s%s" $rini (upper (substr (index $rparts 1) 0 1)) -}}{{- end -}}
+<div class="fc-comment">
+<div class="fc-avatar" style="background:{{ index $palette (mod (hash.FNV32a .name) (len $palette)) }}">{{ $rini }}</div>
+<div class="fc-body">
+<div class="fc-bubble"><span class="fc-name">{{ .name }}</span>{{ if .verified }}<span class="fc-verified">{{ $verified }}</span>{{ end }}<span class="fc-text">{{ .text }}</span>{{ with .likes }}<span class="fc-likes">👍 {{ . }}</span>{{ end }}</div>
+<div class="fc-actions"><span class="fc-act">{{ $like }}</span><span class="fc-act">{{ $reply }}</span><span class="fc-time">{{ .time }}</span></div>
+</div>
+</div>
+{{- end }}
+</div>
+{{- end }}
+{{ end }}
+</div>

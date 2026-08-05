@@ -1,0 +1,5 @@
+{{- /* CTA button. Usage: {{< review-cta >}} or {{< review-cta size="small" text="Buy Now" sub="Official site" url="https://..." >}} */ -}}
+{{- $cta := .Get "url" | default .Page.Params.ctaUrl -}}
+{{- $txt := .Get "text" | default .Page.Params.ctaText | default "See The Lowest Price" -}}
+{{- $cls := cond (eq (.Get "size") "small") "cta small" "cta" -}}
+<a class="{{ $cls }}" href="{{ $cta }}">{{ $txt }}{{ with .Get "sub" }}<span class="sub">{{ . }}</span>{{ end }}</a>

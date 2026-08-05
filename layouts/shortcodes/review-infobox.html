@@ -1,0 +1,16 @@
+{{- /* Product "at a glance" box. One per line: Key | Value
+       Usage:
+       {{< review-infobox title="Katori — At A Glance" >}}
+       Material | Solid titanium
+       Price | $59 – $115
+       Guarantee | 30-day money-back
+       {{< /review-infobox >}} */ -}}
+<div class="infobox"><div class="h">{{ .Get "title" | default "At A Glance" }}</div>
+{{- range (split (.Inner | strings.TrimSpace) "\n") -}}
+  {{- $l := strings.TrimSpace . -}}
+  {{- if strings.Contains $l "|" -}}
+    {{- $p := split $l "|" -}}
+    <div class="row"><span>{{ (index $p 0) | strings.TrimSpace }}</span><span>{{ (index $p 1) | strings.TrimSpace | safeHTML }}</span></div>
+  {{- end -}}
+{{- end -}}
+</div>

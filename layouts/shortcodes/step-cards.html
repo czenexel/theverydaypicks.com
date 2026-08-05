@@ -1,0 +1,44 @@
+{{- /* Responsive step cards: 3 across on desktop, stacked on mobile.
+   Inner YAML:
+   steps:
+     - image_id: "..."
+       var: "variant0001"   # optional, defaults variant0001
+       title: "Charge it once"
+       text: "..."
+       link: "https://track.theverydaypicks.com/click"  # optional
+*/ -}}
+{{- $d := .Inner | transform.Unmarshal -}}
+{{- if not (.Page.Store.Get "stepCardsCSS") -}}
+{{- .Page.Store.Set "stepCardsCSS" true -}}
+<style>
+  .step-cards { max-width: 800px; margin: 1.75rem auto; padding: 0 1rem; }
+  .step-cards__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .step-card { display: flex; flex-direction: column; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 22px -18px rgba(0,0,0,.28); }
+  .step-card__imglink { display: block; }
+  .step-card__img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; background: #1a1611; }
+  .step-card__body { padding: 16px 18px 20px; }
+  .step-card__num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #167ac6; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; margin-bottom: 10px; }
+  .step-card__title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.075rem; line-height: 1.3; color: #333; margin: 0 0 6px; }
+  .step-card__text { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 0.95rem; line-height: 1.55; color: #111; margin: 0; }
+  @media (max-width: 768px) {
+    .step-cards__grid { grid-template-columns: 1fr; }
+  }
+</style>
+{{- end -}}
+<div class="step-cards">
+  <div class="step-cards__grid">
+  {{- range $i, $s := $d.steps -}}
+    {{- $src := printf "https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/%s/%s" $s.image_id ($s.var | default "variant0001") -}}
+    <div class="step-card">
+      {{ if $s.link }}<a href="{{ $s.link }}" target="_blank" ctr-type-link="external" class="step-card__imglink">{{ end -}}
+      <img class="step-card__img" src="{{ $src }}" alt="{{ $s.title }}" loading="lazy">
+      {{- if $s.link }}</a>{{ end }}
+      <div class="step-card__body">
+        <span class="step-card__num">{{ add $i 1 }}</span>
+        <h3 class="step-card__title">{{ $s.title }}</h3>
+        <p class="step-card__text">{{ $s.text | safeHTML }}</p>
+      </div>
+    </div>
+  {{- end -}}
+  </div>
+</div>

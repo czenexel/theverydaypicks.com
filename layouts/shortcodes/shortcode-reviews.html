@@ -1,0 +1,71 @@
+{{/* Reviews shortcode.
+   Classic mode (no imgN): renders quote + author, exactly as before.
+   Photo mode (imgN set): renders a card with photo (left) + header/quote (right).
+   Per review i (1..3): paramX = name, paramY = quote text, imgN = Cloudflare image id,
+   ratingN = optional header suffix (e.g. "| Évaluation : ⭐⭐⭐⭐⭐"). */}}
+{{ $verifiedText := .Get "verifiedText" | default "Verified Customer" }}
+{{ $var := .Get "var" | default "variant0001" }}
+
+<div class="testimonial-container-custom">
+
+  {{ if and (.Get "param1") (.Get "param2") }}
+  {{ $img := .Get "img1" }}
+  {{ if $img }}
+  <div class="testimonial-box-custom testimonial-box-photo">
+    <div class="testimonial-photo"><img src="https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/{{ $img }}/{{ $var }}" loading="lazy" alt="{{ .Get "param1" }}"></div>
+    <div class="testimonial-content">
+      <p class="testimonial-author-custom"><strong>{{ .Get "param1" }}</strong>{{ with .Get "rating1" }} <span class="testimonial-rating">{{ . | safeHTML }}</span>{{ end }}</p>
+      <p class="testimonial-text-custom">„{{ .Get "param2" | safeHTML }}”</p>
+    </div>
+  </div>
+  {{ else }}
+  <div class="testimonial-box-custom">
+    <p class="testimonial-text-custom">„{{ .Get "param2" | safeHTML }}”</p>
+    <p class="testimonial-author-custom">
+      <strong>{{ .Get "param1" }}</strong>, {{ $verifiedText }}
+    </p>
+  </div>
+  {{ end }}
+  {{ end }}
+
+  {{ if and (.Get "param3") (.Get "param4") }}
+  {{ $img := .Get "img2" }}
+  {{ if $img }}
+  <div class="testimonial-box-custom testimonial-box-photo">
+    <div class="testimonial-photo"><img src="https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/{{ $img }}/{{ $var }}" loading="lazy" alt="{{ .Get "param3" }}"></div>
+    <div class="testimonial-content">
+      <p class="testimonial-author-custom"><strong>{{ .Get "param3" }}</strong>{{ with .Get "rating2" }} <span class="testimonial-rating">{{ . | safeHTML }}</span>{{ end }}</p>
+      <p class="testimonial-text-custom">„{{ .Get "param4" | safeHTML }}”</p>
+    </div>
+  </div>
+  {{ else }}
+  <div class="testimonial-box-custom">
+    <p class="testimonial-text-custom">„{{ .Get "param4" | safeHTML }}”</p>
+    <p class="testimonial-author-custom">
+      <strong>{{ .Get "param3" }}</strong>, {{ $verifiedText }}
+    </p>
+  </div>
+  {{ end }}
+  {{ end }}
+
+  {{ if and (.Get "param5") (.Get "param6") }}
+  {{ $img := .Get "img3" }}
+  {{ if $img }}
+  <div class="testimonial-box-custom testimonial-box-photo">
+    <div class="testimonial-photo"><img src="https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/{{ $img }}/{{ $var }}" loading="lazy" alt="{{ .Get "param5" }}"></div>
+    <div class="testimonial-content">
+      <p class="testimonial-author-custom"><strong>{{ .Get "param5" }}</strong>{{ with .Get "rating3" }} <span class="testimonial-rating">{{ . | safeHTML }}</span>{{ end }}</p>
+      <p class="testimonial-text-custom">„{{ .Get "param6" | safeHTML }}”</p>
+    </div>
+  </div>
+  {{ else }}
+  <div class="testimonial-box-custom">
+    <p class="testimonial-text-custom">„{{ .Get "param6" | safeHTML }}”</p>
+    <p class="testimonial-author-custom">
+      <strong>{{ .Get "param5" }}</strong>, {{ $verifiedText }}
+    </p>
+  </div>
+  {{ end }}
+  {{ end }}
+
+</div>

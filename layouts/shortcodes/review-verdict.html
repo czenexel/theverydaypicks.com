@@ -1,0 +1,13 @@
+{{- /* Final verdict box with a CTA. Inner = markdown body.
+       Usage:
+       {{< review-verdict heading="The Bottom Line" instock="In stock as of August 2026" >}}
+       After weeks of testing, Katori earns our top spot...
+       {{< /review-verdict >}} */ -}}
+{{- $cta := .Get "cta" | default .Page.Params.ctaUrl -}}
+{{- $txt := .Get "text" | default .Page.Params.ctaText | default "See The Lowest Price" -}}
+<div class="verdict">
+  <h2>{{ .Get "heading" | default "The Bottom Line" }}</h2>
+  {{ .Inner | markdownify }}
+  {{ with .Get "instock" }}<div class="instock">✓ {{ . }}</div>{{ end }}
+  <a class="cta" href="{{ $cta }}">{{ $txt }}</a>
+</div>

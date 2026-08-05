@@ -1,0 +1,24 @@
+{{- /* airz-only variant of epic-specgrid: the center product image links to the CTA. */ -}}
+{{- $d := .Inner | transform.Unmarshal -}}
+{{- $var := $d.var | default "variant0001" -}}
+{{- $src := $d.img -}}
+{{- if $d.image_id }}{{ $src = printf "https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/%s/%s" $d.image_id $var }}{{ end -}}
+{{- $link := $d.link | default .Page.Params.HrefCTA -}}
+<div class="specgrid">
+  <div class="top">
+    {{ with $d.kicker }}<div class="kicker">{{ . }}</div>{{ end }}
+    <h2>{{ $d.title }}</h2>
+    {{ with $d.subtitle }}<p>{{ . }}</p>{{ end }}
+  </div>
+  <div class="layout">
+    <div class="col">
+      {{- range $d.left -}}<div class="card"><div class="ic">{{ .icon }}</div><div class="t">{{ .title }}</div><div class="d">{{ .desc }}</div></div>{{- end -}}
+    </div>
+    <div class="center">
+      {{ if $src }}{{ if $link }}<a href="{{ $link }}" target="_blank" ctr-type-link="external" style="display:block;">{{ end }}<img class="img-slot slot-product" src="{{ $src }}" alt="{{ $d.alt }}" loading="lazy">{{ if $link }}</a>{{ end }}{{ else }}<div class="img-slot slot-product"></div>{{ end }}
+    </div>
+    <div class="col">
+      {{- range $d.right -}}<div class="card"><div class="ic">{{ .icon }}</div><div class="t">{{ .title }}</div><div class="d">{{ .desc }}</div></div>{{- end -}}
+    </div>
+  </div>
+</div>

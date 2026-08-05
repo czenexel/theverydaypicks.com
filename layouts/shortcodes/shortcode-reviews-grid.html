@@ -1,0 +1,50 @@
+{{- /* Star-rated review cards in a responsive grid (3-col desktop -> 1-col mobile).
+   Self-contained: injects its own CSS once per page (Page.Store gate), so it only
+   affects pages that actually use it.
+
+   Inline YAML body:
+   {{< shortcode-reviews-grid >}}
+   title: "What Buyers Are Saying"   # optional heading above the grid
+   items:
+     - name: "Lisa P., Denver"
+       rating: 5                      # supports halves, e.g. 4.5
+       verified: true                 # badge shows unless set to false
+       text: "Great board…"
+   {{< /shortcode-reviews-grid >}} */ -}}
+{{- $d := .Inner | transform.Unmarshal -}}
+{{- if not $d -}}
+  {{- errorf "shortcode-reviews-grid: inline YAML body did not parse (page %s)" .Page.Path -}}
+{{- end -}}
+{{- $items := $d.items | default slice -}}
+{{- if not (.Page.Store.Get "rgCardsCSS") -}}
+{{- .Page.Store.Set "rgCardsCSS" true -}}
+<style>
+.rg-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0; align-items: start; }
+.rg-cards .rg-card { background: #f2f2f2; border-radius: 12px; padding: 24px 22px; }
+.rg-cards .rg-card__name { display: flex; align-items: center; gap: 6px; font-family: inherit; font-size: 1.15rem; font-weight: 700; color: #1a1a1a; margin: 0 0 12px; padding: 0; line-height: 1.3; }
+.rg-cards .rg-card__badge { width: 18px; height: 18px; flex-shrink: 0; }
+.rg-cards .rg-card__stars { position: relative; display: inline-block; font-size: 1.45rem; line-height: 1; letter-spacing: 3px; margin: 0 0 16px; white-space: nowrap; }
+.rg-cards .rg-card__stars-empty { color: #d8d8d8; }
+.rg-cards .rg-card__stars-fill { position: absolute; left: 0; top: 0; color: #ffc107; overflow: hidden; white-space: nowrap; }
+.rg-cards .rg-card__text { font-size: 1rem; color: #2a2a2a; line-height: 1.55; margin: 0; padding: 0; }
+.rg-title { font-size: 1.5rem; font-weight: 700; color: #0d244f; margin: 1.5rem 0 1rem; }
+@media (max-width: 900px) { .rg-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .rg-cards { grid-template-columns: 1fr; gap: 16px; } }
+</style>
+{{- end }}
+{{- with $d.title }}<h2 class="rg-title">{{ . }}</h2>{{ end }}
+<div class="rg-cards">
+{{- range $items }}
+{{- $r := .rating | default 5 -}}
+{{- $pct := printf "%.1f" (mul (float $r) 20.0) -}}
+{{- $verified := true -}}{{- if eq .verified false }}{{- $verified = false -}}{{- end -}}
+  <div class="rg-card">
+    <p class="rg-card__name">{{ .name }}{{ if $verified }}<svg class="rg-card__badge" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Verified"><circle cx="12" cy="12" r="11" fill="#1d9bf6"></circle><path d="M7 12.3l3.2 3.2L17 8.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>{{ end }}</p>
+    <span class="rg-card__stars" role="img" aria-label="{{ $r }} out of 5 stars">
+      <span class="rg-card__stars-empty">★★★★★</span>
+      <span class="rg-card__stars-fill" style="width: {{ $pct }}%">★★★★★</span>
+    </span>
+    <p class="rg-card__text">{{ .text | safeHTML }}</p>
+  </div>
+{{- end }}
+</div>

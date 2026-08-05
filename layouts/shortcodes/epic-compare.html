@@ -1,0 +1,16 @@
+{{- $d := .Inner | transform.Unmarshal -}}
+<div class="compare">
+  <h2>{{ $d.title }}</h2>
+  {{ with $d.subtitle }}<div class="sub">{{ . }}</div>{{ end }}
+  <div class="table-wrap"><table>
+    <thead><tr><th></th>{{ range $d.columns }}<th>{{ . }}</th>{{ end }}<th class="us">{{ $d.product }}</th></tr></thead>
+    <tbody>
+      {{- range $d.rows -}}
+      <tr><th>{{ .label }}</th>
+        {{- range $ci, $c := .cells -}}<td class="{{ $c.icon }}" data-label="{{ index $d.columns $ci }}">{{ if eq $c.icon "no" }}<span class="x">✕</span>{{ else if eq $c.icon "yes" }}<span class="v">✓</span>{{ end }}{{ $c.text }}</td>{{- end -}}
+        <td class="us" data-label="{{ $d.product }}">{{ if eq .pro.icon "yes" }}<span class="v">✓</span>{{ end }}{{ .pro.text }}</td>
+      </tr>
+      {{- end -}}
+    </tbody>
+  </table></div>
+</div>

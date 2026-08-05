@@ -1,0 +1,17 @@
+{{- $d := .Inner | transform.Unmarshal -}}
+<div class="comments">
+  <h2>{{ $d.title }}</h2>
+  {{ with $d.lead }}<div class="lead">{{ . }}</div>{{ end }}
+  {{- range $i, $c := $d.items -}}
+  {{- $cls := index (slice "c1" "c2" "c3" "c4" "c5") (mod $i 5) -}}
+  <div class="comm">
+    <div class="head">
+      <div class="av {{ $cls }}">{{ substr $c.name 0 1 }}</div>
+      <div class="name">{{ $c.name }}{{ with $c.loc }} <span class="loc">· {{ . }}</span>{{ end }}</div>
+      <div class="time">{{ $c.time }}</div>
+    </div>
+    <div class="text">{{ $c.text }}</div>
+    <div class="react"><span class="like">▲ {{ $d.likeText | default "Me gusta" }}</span><span><b>{{ $c.likes | default 0 }}</b></span></div>
+  </div>
+  {{- end -}}
+</div>

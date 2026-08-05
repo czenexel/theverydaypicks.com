@@ -1,0 +1,78 @@
+{{- /* Elaborated comparison table: a short phrase (+ optional ✓/✗ icon) per cell,
+   with the product highlighted as the RIGHTMOST "RECOMMENDED" column.
+   Self-contained — injects its own CSS once per page (Page.Store gate).
+
+   Inline YAML body:
+   {{< shortcode-compare-table-pro >}}
+   product: "Katori (Titanium)"          # rightmost column header
+   recommendedLabel: "RECOMMENDED"        # optional badge under the product name
+   columns:                               # the alternative columns (left -> right)
+     - "Plastic board"
+     - "Wood / Bamboo"
+   rows:
+     - label: "Microplastics in your food"
+       cells:                             # one per alternative column, in order
+         - { icon: "no",  text: "~50g a year" }   # icon: "yes" | "no" | omit for none
+         - { icon: "yes", text: "None" }
+       pro: { icon: "yes", text: "Zero — pure metal" }   # the product (rightmost) cell
+   {{< /shortcode-compare-table-pro >}} */ -}}
+{{- $d := .Inner | transform.Unmarshal -}}
+{{- if not $d -}}{{- errorf "shortcode-compare-table-pro: inline YAML did not parse (page %s)" .Page.Path -}}{{- end -}}
+{{- if not (.Page.Store.Get "cpProCSS") -}}
+{{- .Page.Store.Set "cpProCSS" true -}}
+<style>
+.compare-pro { margin: 28px 0; border: 1px solid #e6e6e6; border-radius: 14px; overflow: hidden; }
+.compare-pro table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.compare-pro th, .compare-pro td { padding: 15px 12px; text-align: center; vertical-align: middle; line-height: 1.35; }
+.compare-pro thead th { background: #eef2f6; font-weight: 700; color: #333; }
+.compare-pro tbody td { border-top: 1px solid #ededed; color: #2a2a2a; }
+.compare-pro .cp-corner { background: #eef2f6; }
+.compare-pro .cp-rowlabel { text-align: left; font-weight: 700; color: #1a1a1a; width: 26%; }
+.compare-pro .cp-icon { font-weight: 800; margin-right: 4px; }
+.compare-pro td.cp-yes .cp-icon { color: #1f9d57; }
+.compare-pro td.cp-no .cp-icon, .compare-pro td.cp-no .cp-text { color: #c0392b; }
+/* recommended product column = rightmost, highlighted */
+.compare-pro .cp-pro { background: #eef5fb; }
+.compare-pro thead th.cp-pro { background: #e4eefb; border-top: 3px solid #167ac6; }
+.compare-pro .cp-pro-name { display: block; font-size: 1.05rem; font-weight: 800; color: #167ac6; line-height: 1.2; }
+.compare-pro .cp-pro-badge { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em; color: #167ac6; margin-top: 4px; }
+.compare-pro td.cp-pro .cp-text { color: #14233b; font-weight: 700; }
+@media (max-width: 600px) {
+  /* Fit all columns on a phone (no horizontal scroll) so the rightmost
+     RECOMMENDED column is never cut off. Fixed layout keeps columns equal. */
+  .compare-pro { overflow-x: hidden; }
+  .compare-pro table { table-layout: fixed; }
+  .compare-pro th, .compare-pro td { padding: 9px 5px; font-size: 0.72rem; word-break: break-word; }
+  .compare-pro .cp-rowlabel { width: 23%; }
+  .compare-pro .cp-icon { margin-right: 2px; }
+  .compare-pro .cp-pro-name { font-size: 0.76rem; }
+  .compare-pro .cp-pro-badge { font-size: 0.52rem; letter-spacing: 0.03em; margin-top: 3px; }
+}
+</style>
+{{- end }}
+<div class="compare-pro">
+  <table>
+    <thead>
+      <tr>
+        <th class="cp-corner"></th>
+        {{- range $d.columns }}
+        <th>{{ . }}</th>
+        {{- end }}
+        <th class="cp-pro"><span class="cp-pro-name">{{ $d.product }}</span>{{ with $d.recommendedLabel }}<span class="cp-pro-badge">{{ . }}</span>{{ end }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{- range $d.rows }}
+      <tr>
+        <td class="cp-rowlabel">{{ .label }}</td>
+        {{- range .cells }}
+        <td class="{{ with .icon }}cp-{{ . }}{{ end }}">{{ with .icon }}<span class="cp-icon">{{ if eq . "yes" }}&#10003;{{ else }}&#10007;{{ end }}</span>{{ end }}<span class="cp-text">{{ .text | safeHTML }}</span></td>
+        {{- end }}
+        {{- with .pro }}
+        <td class="cp-pro{{ with .icon }} cp-{{ . }}{{ end }}">{{ with .icon }}<span class="cp-icon">{{ if eq . "yes" }}&#10003;{{ else }}&#10007;{{ end }}</span>{{ end }}<span class="cp-text">{{ .text | safeHTML }}</span></td>
+        {{- end }}
+      </tr>
+      {{- end }}
+    </tbody>
+  </table>
+</div>
