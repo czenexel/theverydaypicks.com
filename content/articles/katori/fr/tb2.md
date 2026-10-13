@@ -7,7 +7,7 @@ layout: "ecom-base-01"
 
 advertorialDisclosure: "Advertorial"
 
-HrefCTA: "https://track.theverydaypicks.com/click"
+HrefCTA: "https://track.trendreporter24.com/click"
 stickyButtonText: "Vérifier la disponibilité >>"
 scrollThreshold: 3200
 
@@ -36,7 +36,7 @@ disclaimer: |
     **Tiers :** Nous ne vendons pas le produit nous-mêmes. Pour toute question concernant les commandes, les livraisons ou le service client, nous vous renvoyons au site web du fournisseur.
 ---
 
-{{< shortcode-image-no-sub-hero link="https://track.theverydaypicks.com/click" image_id="2d5969da-22eb-42e8-ae52-be49ffda9300" var="variant0001" >}}
+{{< shortcode-image-no-sub-hero link="https://track.trendreporter24.com/click" image_id="2d5969da-22eb-42e8-ae52-be49ffda9300" var="variant0001" >}}
 
 En mars dernier, ma fille de quatre ans a attrapé une gastro-entérite qui l'a complètement clouée au lit pendant trois jours. Les vomissements, la fièvre, les nuits blanches... ce fut un cauchemar. Notre médecin nous a dit qu'il s'agissait probablement d'une bactérie d'origine alimentaire, contractée directement à la maison.
 
@@ -94,7 +94,7 @@ J'étais dans une impasse. Soit je nourrissais ma famille avec des bactéries et
 
 ## « Au Japon, nous ne préparerions jamais de nourriture sur du plastique. »
 
-{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="acc662c9-fbe3-4895-30e8-8184f01b6700" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="acc662c9-fbe3-4895-30e8-8184f01b6700" var="variant0001" >}}
 
 Je n'aurais peut-être jamais trouvé la solution sans mon amie Yuki.
 
@@ -110,15 +110,15 @@ Elle m'a regardée en souriant. « C'est du titane pur », a-elle dit. « Dans l
 
 Elle me l'a tendue. Elle était étonnamment légère, mais incroyablement robuste. La surface était lisse et ne présentait aucune rayure profonde, bien qu'elle l'ait utilisée tous les jours pendant deux ans.
 
-« Celle-ci s'appelle [Katori](https://track.theverydaypicks.com/click) », m'a-t-elle expliqué. « Un chef japonais en avait assez de voir les familles utiliser du plastique toxique, et l'a spécialement conçue pour les cuisines domestiques. »
+« Celle-ci s'appelle [Katori](https://track.trendreporter24.com/click) », m'a-t-elle expliqué. « Un chef japonais en avait assez de voir les familles utiliser du plastique toxique, et l'a spécialement conçue pour les cuisines domestiques. »
 
 J'ai sorti mon téléphone et j'en ai commandé une avant même que le dîner ne soit servi.
 
 ## Pourquoi la Katori est la dernière planche à découper que vous achèterez de votre vie
 
-{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="86a60472-8489-44d2-d542-5ee005a0c500" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="86a60472-8489-44d2-d542-5ee005a0c500" var="variant0001" >}}
 
-J'ai ma planche [Katori](https://track.theverydaypicks.com/click) depuis quatre mois maintenant, et c'est de loin le meilleur investissement que je n'ai jamais fait pour ma cuisine. Voici pourquoi elle surpasse mes anciennes planches à tous les niveaux :
+J'ai ma planche [Katori](https://track.trendreporter24.com/click) depuis quatre mois maintenant, et c'est de loin le meilleur investissement que je n'ai jamais fait pour ma cuisine. Voici pourquoi elle surpasse mes anciennes planches à tous les niveaux :
 
 **Zéro microplastique ni toxine :** La Katori est fabriquée en titane massif de qualité médicale. Sans BPA, sans revêtements, sans produits chimiques. Lorsque vous coupez dessus, absolument rien ne se détache dans la nourriture de votre famille.
 
@@ -136,11 +136,11 @@ Avant, cuisiner s'accompagnait toujours d'une légère angoisse en toile de fond
 
 Et maintenant ? Cette angoisse a complètement disparu.
 
-J'utilise ma [Katori](https://track.theverydaypicks.com/click), je la rince en quelques secondes et je la sèche. C'est tout. Elle est toujours exactement dans le même état que le jour où je l'ai sortie de son emballage.
+J'utilise ma [Katori](https://track.trendreporter24.com/click), je la rince en quelques secondes et je la sèche. C'est tout. Elle est toujours exactement dans le même état que le jour où je l'ai sortie de son emballage.
 
 Pensez à tout l'argent que vous avez jeté par les fenêtres au cours des cinq dernières années pour des planches à découper en plastique ou en bois bon marché, déformées et malodorantes. Cinquante euros ? Cent euros ? La Katori est la dernière planche que vous n'aurez jamais à acheter – le titane est pratiquement indestructible. C'est un achat unique pour toute une vie de repas sains et sécurisés.
 
-{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="7026cde8-21b2-45d7-f7e2-514d94d0a000" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="7026cde8-21b2-45d7-f7e2-514d94d0a000" var="variant0001" >}}
 
 ## Ce que disent les autres acheteurs
 
@@ -162,7 +162,7 @@ Pourquoi n'est-elle pas vendue dans les grands magasins classiques ?
 
 ## URGENT : Une offre spéciale pour nos lecteurs (jusqu'à 70 % de réduction)
 
-{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="8caa1130-5ffa-4eaa-d8e2-13f6afaffa00" var="squarenormal" full="true" >}}
+{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="8caa1130-5ffa-4eaa-d8e2-13f6afaffa00" var="squarenormal" full="true" >}}
 
 ### Le fabricant mène actuellement une grande campagne promotionnelle pour équiper davantage de foyers français avec ces planches.
 
@@ -172,4 +172,4 @@ Pourquoi n'est-elle pas vendue dans les grands magasins classiques ?
 
 ### Cliquez ci-dessous pour vérifier si la réduction de 70 % est toujours active dans votre région :
 
-{{< cta-button href="https://track.theverydaypicks.com/click" line1="Vérifier la disponibilité et obtenir 70 % de réduction" >}}
+{{< cta-button href="https://track.trendreporter24.com/click" line1="Vérifier la disponibilité et obtenir 70 % de réduction" >}}

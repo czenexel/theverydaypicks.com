@@ -6,7 +6,7 @@ layout: "ecom-base-01"
 
 advertorialDisclosure: "Advertorial"
 
-HrefCTA: "https://track.theverydaypicks.com/click"
+HrefCTA: "https://track.trendreporter24.com/click"
 stickyButtonText: "Check Availability >>"
 scrollThreshold: 3200
 
@@ -35,7 +35,7 @@ disclaimer: |
     **Third Parties:** We do not sell the product ourselves. For questions about orders, deliveries, or customer service, please refer to the provider's website.
 ---
 
-{{< shortcode-image-no-sub-hero link="https://track.theverydaypicks.com/click" image_id="2d5969da-22eb-42e8-ae52-be49ffda9300" var="variant0001" >}}
+{{< shortcode-image-no-sub-hero link="https://track.trendreporter24.com/click" image_id="2d5969da-22eb-42e8-ae52-be49ffda9300" var="variant0001" >}}
 
 This past March, my four-year-old daughter came down with a stomach bug that knocked her flat for three solid days. The vomiting, the fever, the sleepless nights — it was a nightmare. Our doctor said it was likely a foodborne bacteria she picked up right at home.
 
@@ -93,7 +93,7 @@ I was stuck between a rock and a hard place. Either I was feeding my family bact
 
 ## "In Japan, We Would Never Prepare Food on Plastic."
 
-{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="acc662c9-fbe3-4895-30e8-8184f01b6700" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="acc662c9-fbe3-4895-30e8-8184f01b6700" var="variant0001" >}}
 
 I might never have found the solution if it weren't for my friend Yuki.
 
@@ -109,15 +109,15 @@ She looked at me and smiled. "It's pure titanium," she said. "In Japanese profes
 
 She handed it to me. It was surprisingly light, but incredibly sturdy. The surface was smooth and didn't have a single deep scratch, even though she'd been using it daily for two years.
 
-"This one is called [Katori](https://track.theverydaypicks.com/click)," she told me. "A Japanese chef got fed up watching families use toxic plastic and designed it specifically for home kitchens."
+"This one is called [Katori](https://track.trendreporter24.com/click)," she told me. "A Japanese chef got fed up watching families use toxic plastic and designed it specifically for home kitchens."
 
 I pulled out my phone and ordered one before dinner was even served.
 
 ## Why the Katori Is the Last Cutting Board You'll Ever Buy
 
-{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="86a60472-8489-44d2-d542-5ee005a0c500" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="86a60472-8489-44d2-d542-5ee005a0c500" var="variant0001" >}}
 
-I've had my [Katori](https://track.theverydaypicks.com/click) board for four months now, and it's by far the best investment I've ever made for my kitchen. Here's why it puts my old boards to shame in every single way:
+I've had my [Katori](https://track.trendreporter24.com/click) board for four months now, and it's by far the best investment I've ever made for my kitchen. Here's why it puts my old boards to shame in every single way:
 
 **Zero microplastics or toxins:** The Katori is made of solid medical-grade titanium. No BPA, no coatings, no chemicals. When you cut on it, absolutely nothing leaches into your family's food.
 
@@ -135,11 +135,11 @@ Cooking used to come with a low hum of background anxiety. I'd look at my scratc
 
 And now? That anxiety is completely gone.
 
-I use my [Katori](https://track.theverydaypicks.com/click), rinse it off in seconds, and dry it. That's it. It still looks exactly the same as the day I took it out of the box.
+I use my [Katori](https://track.trendreporter24.com/click), rinse it off in seconds, and dry it. That's it. It still looks exactly the same as the day I took it out of the box.
 
 Just think about how much money you've thrown out the window over the past five years on cheap, warped, smelly plastic or wooden cutting boards. Fifty dollars? A hundred? The Katori is the last board you'll ever need to buy — titanium is practically indestructible. It's a one-time purchase for a lifetime of safe, clean meals.
 
-{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="7026cde8-21b2-45d7-f7e2-514d94d0a000" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="7026cde8-21b2-45d7-f7e2-514d94d0a000" var="variant0001" >}}
 
 ## What Other Buyers Are Saying
 
@@ -161,7 +161,7 @@ Why isn't it sold in regular department stores?
 
 ## URGENT: A Special Offer for Our Readers (Up to 70% Off)
 
-{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="8caa1130-5ffa-4eaa-d8e2-13f6afaffa00" var="squarenormal" full="true" >}}
+{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="8caa1130-5ffa-4eaa-d8e2-13f6afaffa00" var="squarenormal" full="true" >}}
 
 ### The manufacturer is currently running a major promotion to get these boards into more Canadian homes.
 
@@ -171,4 +171,4 @@ Why isn't it sold in regular department stores?
 
 ### Click below to check if the 70% discount is still active in your region:
 
-{{< cta-button href="https://track.theverydaypicks.com/click" line1="Check Availability and Lock In 70% Off" >}}
+{{< cta-button href="https://track.trendreporter24.com/click" line1="Check Availability and Lock In 70% Off" >}}

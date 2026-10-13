@@ -1,8 +1,0 @@
-{{- $id := .Get "image_id" -}}
-{{- $var := .Get "var" | default "variant0001" -}}
-{{- $src := .Get "img" -}}
-{{- if $id }}{{ $src = printf "https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/%s/%s" $id $var }}{{ end -}}
-<div class="hero">
-  {{ if $src }}<img class="img-slot slot-hero" src="{{ $src }}" alt="{{ .Get "alt" }}" loading="lazy">{{ else }}<div class="img-slot slot-hero"></div>{{ end }}
-  {{- with .Get "caption" -}}<div class="caption">{{ with $.Get "label" }}<b>{{ . }}</b>{{ end }}{{ . }}</div>{{- end -}}
-</div>

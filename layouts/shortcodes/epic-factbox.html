@@ -1,0 +1,19 @@
+{{- /* Simple two-column fact/problem box.
+   Replaces the old hard-coded inline <div style="..."> problem tables so the
+   styling lives in the layout instead of the content. YAML inner, like
+   epic-compare / epic-qa.
+
+   {{< epic-factbox >}}
+   title: "Cutting Board Materials — The Problems"
+   rows:
+     - k: "Plastic (PE/PP)"
+       v: "Bacteria survive in knife scratches"
+   {{< /epic-factbox >}}
+*/ -}}
+{{- $d := .Inner | transform.Unmarshal -}}
+<div class="factbox">
+  {{- with $d.title }}<div class="fb-head">{{ . }}</div>{{ end -}}
+  {{- range $d.rows -}}
+  <div class="fb-row"><span class="k">{{ .k }}</span><span class="v">{{ .v }}</span></div>
+  {{- end -}}
+</div>

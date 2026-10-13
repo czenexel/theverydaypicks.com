@@ -1,8 +1,0 @@
-{{ $link := .Get "link" }}
-{{ if $link }}
-  <a href="{{ $link }}" target="_blank">
-{{ end }}
-    <img class="image-max-width" src="https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/{{ .Get "image_id" }}/{{ .Get "variant_name" }}" id="trackclick" alt="{{ .Get "altText" }}"/>
-{{ if $link }}
-  </a>
-{{ end }}
