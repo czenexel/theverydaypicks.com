@@ -3,7 +3,7 @@ title: "Warum Tausende Menschen in Deutschland jetzt dieses Titan-Schneidebrett 
 subtitle: "Das neu entwickelte Titan-Schneidebrett von Dr. Henrik Berger macht Schluss mit zerkratzten, verfärbten Plastikbrettern – keine Rillen voller Bakterien, kein Mikroplastik und keine schädlichen Rückstände im Essen, sondern eine glatte, hygienische Oberfläche, die in Sekunden gereinigt werden kann."
 date: 2024-05-14
 countryName: "Deutschland"
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

@@ -12,8 +12,8 @@
 */ -}}
 {{- $d := .Inner | transform.Unmarshal -}}
 <div class="factbox">
-  {{- with $d.title }}<div class="fb-head">{{ . }}</div>{{ end -}}
+  {{- with $d.title }}<div class="fb-head">{{ . | safeHTML }}</div>{{ end -}}
   {{- range $d.rows -}}
-  <div class="fb-row"><span class="k">{{ .k }}</span><span class="v">{{ .v }}</span></div>
+  <div class="fb-row"><span class="k">{{ .k | safeHTML }}</span><span class="v">{{ .v | safeHTML }}</span></div>
   {{- end -}}
 </div>

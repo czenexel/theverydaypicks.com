@@ -3,7 +3,7 @@ title: "Why Thousands of Americans Are Now Using This Titanium Cutting Board –
 subtitle: "The newly developed titanium cutting board by Dr. Henrik Berger puts an end to scratched, stained plastic boards – no grooves full of bacteria, no microplastics, and no harmful residues in your food, just a smooth, hygienic surface that can be cleaned in seconds."
 date: 2024-05-14
 countryName: "United States"
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

@@ -2,7 +2,7 @@
 title: "My Husband's Doctor Said It Was Food Poisoning. The Real Culprit Was Hiding In Plain Sight On My Kitchen Counter."
 subtitle: "One dinner changed everything I thought I knew about kitchen hygiene. It all started with a Japanese kitchen secret I'd never even considered..."
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

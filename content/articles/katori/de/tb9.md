@@ -2,7 +2,7 @@
 title: "Ich dachte, mein Schneidebrett wäre sauber. Dann zeigte mir eine befreundete Lebensmittelchemikerin den Labortest an 12 Brettern – und mir verging fast der Appetit auf das Abendessen."
 subtitle: "Ein einziges Telefongespräch veränderte alles, was ich über Küchenhygiene zu wissen glaubte – und alles begann mit einem Material, an das ich vorher nicht einmal im Traum gedacht hatte ..."
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

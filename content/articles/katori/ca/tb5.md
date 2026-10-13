@@ -2,7 +2,7 @@
 title: "I Sawed My Old Cutting Board in Half. What I Found Inside Was Worse Than I Ever Expected."
 subtitle: "A study in Nature Medicine found microplastics accumulating inside human brains – and the primary plastic was polyethylene, the same material as most kitchen cutting boards. What I discovered when I cut mine open changed how my family prepares food forever."
 date: 2024-05-15
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

@@ -2,7 +2,7 @@
 title: "Je lavais ma planche à découper tous les jours. Puis une cheffe japonaise m'a révélé ce qui s'y cachait vraiment – et j'en ai eu des sueurs froides."
 subtitle: "Un simple dîner a définitivement bouleversé ma vision de l'hygiène en cuisine – et la solution tenait dans un matériau étonnant que j'ignorais totalement…"
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 countryName: "France"
 advertorialDisclosure: "Advertorial"
 

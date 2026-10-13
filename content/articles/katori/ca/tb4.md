@@ -2,7 +2,7 @@
 title: "I Sawed My Old Cutting Board in Half. What I Found Inside Made Me Throw It Out Immediately"
 subtitle: "Researchers found that a single plastic cutting board releases tens of millions of microplastic particles into your food every year. What I discovered when I cut mine open changed the way my family prepares food forever."
 date: 2024-05-15
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

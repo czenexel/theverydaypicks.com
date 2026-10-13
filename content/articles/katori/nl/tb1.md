@@ -3,7 +3,7 @@ title: "Ik heb mijn oude snijplank doormidden gezaagd. Wat ik daarin vond, deed 
 subtitle: "Nadat mijn dochter ziek werd, kwam ik erachter wat zich echt ophoopt in de mesgroeven van plastic snijplanken. Wat ik ontdekte toen ik mijn plank openzaagde, heeft de manier waarop mijn familie eten bereidt voorgoed veranderd."
 date: 2024-05-15
 countryName: "Nederland"
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

@@ -2,7 +2,7 @@
 title: "Ich habe mein altes Schneidebrett in der Mitte durchgesägt. Was ich darin fand, ließ mich es sofort wegwerfen – und ein Geheimnis eines japanischen Kochs klauen"
 subtitle: "Nachdem meine Tochter krank wurde, erfuhr ich, was sich tatsächlich in den Messerrillen von Kunststoff-Schneidebrettern ansammelt. Was ich beim Aufschneiden meines Bretts entdeckte, hat die Art, wie meine Familie Essen zubereitet, für immer verändert."
 date: 2024-05-15
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

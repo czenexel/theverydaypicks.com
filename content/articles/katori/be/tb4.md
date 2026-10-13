@@ -2,7 +2,7 @@
 title: "Ik dacht dat mijn snijplank schoon was. Toen liet een Japanse chef-kok me zien wat er écht in zat – en ik had bijna geen trek meer in mijn avondeten."
 subtitle: "Eén etentje veranderde alles wat ik dacht te weten over keukenhygiëne – en het begon allemaal met een materiaal waar ik nog nooit aan had gedacht…"
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 countryName: "België"
 advertorialDisclosure: "Advertorial"
 

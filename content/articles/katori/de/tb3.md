@@ -3,7 +3,7 @@ title: "Ich habe mein altes Schneidebrett in der Mitte durchgesägt – was ich 
 subtitle: "Nachdem ich erfahren habe, was sich tatsächlich in den Messerrillen von Kunststoff- und Holzschneidebrettern ansammelt – und was Ihre Familie deshalb mitisst – habe ich einen Wechsel vollzogen, den ich schon vor Jahren hätte machen sollen."
 date: 2024-05-14
 countryName: "Deutschland"
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

@@ -2,7 +2,7 @@
 title: "I Thought My Cutting Board Was Clean. Then a Japanese Chef Showed Me What Was Really Hiding Inside It – and I Nearly Lost My Appetite for Dinner."
 subtitle: "If you prepare food on a plastic or wooden surface, you need to read this before your family's next meal. A retired Japanese chef revealed the toxic truth hiding in everyday kitchens – and the C$49 solution that fixes it forever."
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

@@ -2,7 +2,7 @@
 title: "Ich dachte, mein Schneidebrett wäre sauber. Dann zeigte mir ein japanischer Koch, was sich wirklich darin verbarg – und mir verging fast der Appetit auf das Abendessen."
 subtitle: "Ein Abendessen veränderte alles, was ich über Küchenhygiene zu wissen glaubte – und alles begann mit einem Material, an das ich vorher nicht einmal im Traum gedacht hatte ..."
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 countryName: "Deutschland"
 advertorialDisclosure: "Advertorial"
 

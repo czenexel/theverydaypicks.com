@@ -3,7 +3,7 @@ title: "Ich habe mein altes Schneidebrett in der Mitte durchgesägt. Was ich dar
 subtitle: "Eine Studie in Nature Medicine zeigte, dass sich Mikroplastik im menschlichen Gehirn ansammelt – und das vorherrschende Plastik war Polyethylen, derselbe Stoff, aus dem die meisten Küchenschneidebretter bestehen. Was ich entdeckte, als ich meines aufschnitt, hat die Art, wie meine Familie Essen zubereitet, für immer verändert."
 date: 2024-05-15
 countryName: "Germany"
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

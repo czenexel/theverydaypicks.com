@@ -2,7 +2,7 @@
 title: "Je pensais que ma planche à découper était propre. Puis un chef japonais m'a montré ce qui s'y cachait vraiment – et j'en ai presque perdu l'appétit pour le dîner."
 subtitle: "Un dîner a changé tout ce que je croyais savoir sur l'hygiène en cuisine – et tout a commencé avec un matériau auquel je n'avais jamais pensé, même en rêve..."
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 countryName: "France"
 advertorialDisclosure: "Advertorial"
 

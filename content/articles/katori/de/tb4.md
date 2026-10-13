@@ -3,7 +3,7 @@ title: "Ich habe mein altes Schneidebrett in der Mitte durchgesägt. Was ich dar
 subtitle: "Nachdem meine Tochter krank wurde, erfuhr ich, was sich tatsächlich in den Messerrillen von Kunststoff-Schneidebrettern ansammelt. Was ich beim Aufschneiden meines Bretts entdeckte, hat die Art, wie meine Familie Essen zubereitet, für immer verändert."
 date: 2024-05-15
 countryName: "Deutschland"
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

@@ -2,7 +2,7 @@
 title: "I Thought My Chopping Board Was Clean. Then a Japanese Chef Showed Me What Was Hiding in the Scratches – and It Completely Turned My Stomach."
 subtitle: "A single dinner party changed everything I thought I knew about kitchen hygiene – and it all came down to a brilliant material I'd never even seen before…"
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 countryName: "Ireland"
 advertorialDisclosure: "Advertorial"
 

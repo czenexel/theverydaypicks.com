@@ -3,7 +3,7 @@ title: "J'ai scié ma vieille planche à découper en plein milieu. Ce que j'y a
 subtitle: "Après que ma fille soit tombée malade, j'ai découvert ce qui s'accumule vraiment dans les rainures des planches à découper en plastique. Ce que j'ai vu en découpant ma propre planche a changé à tout jamais la façon dont ma famille prépare les repas."
 date: 2024-05-15
 countryName: "France"
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

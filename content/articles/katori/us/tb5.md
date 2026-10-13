@@ -2,7 +2,7 @@
 title: "Health Inspector Warns: What He Sees on the Average American Cutting Board Made Him Stop Using Plastic and Wood at Home — Here's What He Found Hiding Inside Both"
 subtitle: "In 24 years on the job, he's swabbed more than 3,000 home cutting boards after foodborne illness reports. What his ATP meter reads is the real reason millions of American families get sick from their own kitchens every year — and the surprising material he switched to in his own home that no amount of scrubbing can ever contaminate."
 date: 2026-01-20
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 countryName: "United States"
 advertorialDisclosure: "Advertorial"
 

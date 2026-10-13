@@ -2,7 +2,7 @@
 title: "I Thought My Cutting Board Was Clean. Then a Microbiologist Friend Showed Me the Lab Test on 12 of Them – and I Nearly Lost My Appetite for Dinner."
 subtitle: "One phone call changed everything I thought I knew about kitchen hygiene – and it all started with a material I'd never even considered before…"
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

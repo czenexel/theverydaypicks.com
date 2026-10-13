@@ -2,7 +2,7 @@
 title: "Health Inspector Warns: What He Pulled Off the Cutting Board in 9 Out of 10 American Kitchens Will Make You Throw Yours in the Trash Tonight"
 subtitle: "In 24 years on the job, he's swabbed more than 3,000 home cutting boards. The numbers his ATP meter pulls off the average American kitchen are the real reason hundreds of thousands of families get sick from their own food every single year — and there's exactly one material in his own kitchen now that the meter can't even register."
 date: 2026-01-20
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 countryName: "United States"
 advertorialDisclosure: "Advertorial"
 

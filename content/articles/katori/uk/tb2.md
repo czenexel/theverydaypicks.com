@@ -2,7 +2,7 @@
 title: "Why thousands of people in the UK are now using this titanium chopping board – developed by a British food chemist and father"
 subtitle: "The newly developed titanium chopping board by Dr. Henry Berger puts an end to scratched, discoloured plastic boards – no grooves full of bacteria, no microplastics, and no harmful residues in your food, but a smooth, hygienic surface that can be cleaned in seconds."
 date: 2024-05-14
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

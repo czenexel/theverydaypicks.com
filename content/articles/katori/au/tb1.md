@@ -3,7 +3,7 @@ title: "I sawed my old chopping board straight down the middle. What I found ins
 subtitle: "After my daughter got sick, I learned what actually builds up in the knife grooves of plastic chopping boards. What I discovered when I cut mine open changed the way my family prepares food forever."
 date: 2024-05-15
 countryName: "Australia"
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

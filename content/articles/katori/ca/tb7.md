@@ -2,7 +2,7 @@
 title: "I Thought My Cutting Board Was Clean. Then a Japanese Chef Showed Me What Was Actually Growing Inside It – and I Could Barely Finish My Dinner."
 subtitle: "One dinner changed everything I thought I knew about kitchen hygiene – and it all came down to a material I'd never once considered…"
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"

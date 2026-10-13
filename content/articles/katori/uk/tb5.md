@@ -2,7 +2,7 @@
 title: "I thought my chopping board was clean. Then a Japanese chef showed me what was really lurking inside it – and I nearly lost my appetite for dinner."
 subtitle: "One dinner changed everything I thought I knew about kitchen hygiene – and it all started with a material I'd never even dreamt of before…"
 date: 2025-10-07
-layout: "ecom-base-13"
+layout: "ecom-base-14"
 advertorialDisclosure: "Advertorial"
 
 HrefCTA: "https://track.theverydaypicks.com/click"
