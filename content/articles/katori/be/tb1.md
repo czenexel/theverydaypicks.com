@@ -3,11 +3,10 @@ title: "Ik heb mijn oude snijplank doormidden gezaagd. Wat ik daarin vond, deed 
 subtitle: "Nadat mijn dochter ziek werd, kwam ik erachter wat zich echt ophoopt in de mesgroeven van plastic snijplanken. Wat ik ontdekte toen ik mijn plank openzaagde, heeft de manier waarop mijn familie eten bereidt voorgoed veranderd."
 date: 2024-05-15
 countryName: "België"
-layout: "ecom-base-01"
-
+layout: "ecom-base-13"
 advertorialDisclosure: "Advertorial"
 
-HrefCTA: "https://track.trendreporter24.com/click"
+HrefCTA: "https://track.theverydaypicks.com/click"
 stickyButtonText: "Beschikbaarheid controleren >>"
 scrollThreshold: 3200
 
@@ -36,7 +35,7 @@ disclaimer: |
     **Derden:** Wij verkopen het product niet zelf. Voor vragen over bestellingen, leveringen of de klantenservice verwijzen wij u naar de website van de aanbieder.
 ---
 
-{{< shortcode-image-no-sub-hero link="https://track.trendreporter24.com/click" image_id="2d5969da-22eb-42e8-ae52-be49ffda9300" var="variant0001" >}}
+{{< shortcode-image-no-sub-hero link="https://track.theverydaypicks.com/click" image_id="2d5969da-22eb-42e8-ae52-be49ffda9300" var="variant0001" >}}
 
 Afgelopen maart kreeg mijn vierjarige dochter een buikgriep die haar drie dagen lang compleet uitschakelde. Het overgeven, de koorts, de slapeloze nachten – het was een nachtmerrie. Onze huisarts zei dat het waarschijnlijk een door voedsel overgedragen bacterie was, die ze gewoon thuis had opgelopen.
 
@@ -94,7 +93,7 @@ Ik zat in een lastig parket. Of ik voerde mijn gezin bacteriën en plastic, of i
 
 ## „In Japan zouden we nooit eten op plastic bereiden."
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="acc662c9-fbe3-4895-30e8-8184f01b6700" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="acc662c9-fbe3-4895-30e8-8184f01b6700" var="variant0001" >}}
 
 Ik had de oplossing misschien wel nooit gevonden als ik mijn vriendin Yuki niet had.
 
@@ -110,15 +109,15 @@ Ze keek me aan en lachte. „Dat is puur titanium”, zei ze. „In Japanse prof
 
 Ze gaf het aan mij. Het was verrassend licht, maar ongelooflijk stevig. Het oppervlak was glad en had geen enkele diepe kras, hoewel ze het al twee jaar lang elke dag had gebruikt.
 
-„Deze heet [Katori](https://track.trendreporter24.com/click)”, vertelde ze me. „Een Japanse chef-kok was het zat om te zien hoe gezinnen giftig plastic gebruiken, en heeft het speciaal ontworpen voor thuiskeukens.”
+„Deze heet [Katori](https://track.theverydaypicks.com/click)”, vertelde ze me. „Een Japanse chef-kok was het zat om te zien hoe gezinnen giftig plastic gebruiken, en heeft het speciaal ontworpen voor thuiskeukens.”
 
 Ik pakte mijn telefoon en bestelde er meteen een, nog voordat het eten werd geserveerd.
 
 ## Waarom de Katori de laatste snijplank is die u ooit zult kopen
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="86a60472-8489-44d2-d542-5ee005a0c500" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="86a60472-8489-44d2-d542-5ee005a0c500" var="variant0001" >}}
 
-Ik heb mijn [Katori](https://track.trendreporter24.com/click)-snijplank nu vier maanden, en het is met afstand de beste investering die ik ooit voor mijn keuken heb gedaan. Hier is de reden waarom het mijn oude planken in elk opzicht overtreft:
+Ik heb mijn [Katori](https://track.theverydaypicks.com/click)-snijplank nu vier maanden, en het is met afstand de beste investering die ik ooit voor mijn keuken heb gedaan. Hier is de reden waarom het mijn oude planken in elk opzicht overtreft:
 
 **Nul microplastics of gifstoffen:** De Katori is gemaakt van massief, medisch gekwalificeerd titanium. Geen BPA, geen coatings, geen chemicaliën. Wanneer u erop snijdt, komt er absoluut niets los in de maaltijd van uw gezin.
 
@@ -136,11 +135,11 @@ Koken ging vroeger altijd gepaard met een lichte, sluimerende onrust. Ik keek na
 
 En nu? Die angst is compleet verdwenen.
 
-Ik gebruik mijn [Katori](https://track.trendreporter24.com/click), spoel het in een paar seconden af en droog het. Dat is alles. Het ziet er nog steeds exact zo uit als de dag waarop ik het uit de verpakking haalde.
+Ik gebruik mijn [Katori](https://track.theverydaypicks.com/click), spoel het in een paar seconden af en droog het. Dat is alles. Het ziet er nog steeds exact zo uit als de dag waarop ik het uit de verpakking haalde.
 
 Denk er eens over na hoeveel geld u de afgelopen vijf jaar uit het raam heeft gegooid aan goedkope, kromgetrokken, stinkende plastic of houten snijplanken. Vijftig euro? Honderd euro? De Katori is de laatste plank die u ooit hoeft te kopen – titanium is praktisch onverwoestbaar. Het is een eenmalige aankoop voor een heel leven lang veilige, schone maaltijden.
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="7026cde8-21b2-45d7-f7e2-514d94d0a000" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="7026cde8-21b2-45d7-f7e2-514d94d0a000" var="variant0001" >}}
 
 ## Wat andere kopers zeggen
 
@@ -162,7 +161,7 @@ Waarom wordt het niet in normale warenhuizen verkocht?
 
 ## DRINGEND: Een speciale aanbieding voor onze lezers (tot 70% korting)
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="8caa1130-5ffa-4eaa-d8e2-13f6afaffa00" var="squarenormal" full="true" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="8caa1130-5ffa-4eaa-d8e2-13f6afaffa00" var="squarenormal" full="true" >}}
 
 ### De fabrikant houdt momenteel een grote actie om deze snijplanken in meer Belgische huishoudens te krijgen.
 
@@ -172,4 +171,4 @@ Waarom wordt het niet in normale warenhuizen verkocht?
 
 ### Klik hieronder om te controleren of de 70% korting in uw regio nog actief is:
 
-{{< cta-button href="https://track.trendreporter24.com/click" line1="Beschikbaarheid controleren en 70% korting claimen" >}}
+{{< cta-button href="https://track.theverydaypicks.com/click" line1="Beschikbaarheid controleren en 70% korting claimen" >}}

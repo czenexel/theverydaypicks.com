@@ -3,11 +3,10 @@ title: "Ich habe mein altes Schneidebrett in der Mitte durchgesägt. Was ich dar
 subtitle: "Eine Studie in Nature Medicine zeigte, dass sich Mikroplastik im menschlichen Gehirn ansammelt – und das vorherrschende Plastik war Polyethylen, derselbe Stoff, aus dem die meisten Küchenschneidebretter bestehen. Was ich entdeckte, als ich meines aufschnitt, hat die Art, wie meine Familie Essen zubereitet, für immer verändert."
 date: 2024-05-15
 countryName: "Germany"
-layout: "ecom-base-01"
-
+layout: "ecom-base-13"
 advertorialDisclosure: "Advertorial"
 
-HrefCTA: "https://track.trendreporter24.com/click"
+HrefCTA: "https://track.theverydaypicks.com/click"
 stickyButtonText: "Verfügbarkeit prüfen >>"
 scrollThreshold: 3200
 
@@ -38,7 +37,7 @@ disclaimer: |
     **In diesem Artikel zitierte Quellen:** [Bioaccumulation of microplastics in decedent human brains – Nature Medicine](https://www.nature.com/articles/s41591-024-03453-1) | [Cutting Boards: An Overlooked Source of Microplastics in Human Food? – Environmental Science & Technology](https://pubs.acs.org/doi/abs/10.1021/acs.est.3c00924) | [Microplastics linked to heart attack, stroke and death – Scientific American / NEJM](https://www.scientificamerican.com/article/microplastics-linked-to-heart-attack-stroke-and-death/) | [Microplastics and our health – Stanford Medicine](https://med.stanford.edu/news/insights/2025/01/microplastics-in-body-polluted-tiny-plastic-fragments.html) | [Microplastics exposure: implications for human fertility, pregnancy and child health – Frontiers in Endocrinology](https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2023.1330396/full)
 ---
 
-{{< shortcode-image-no-sub-hero link="https://track.trendreporter24.com/click" image_id="2d5969da-22eb-42e8-ae52-be49ffda9300" var="variant0001" >}}
+{{< shortcode-image-no-sub-hero link="https://track.theverydaypicks.com/click" image_id="2d5969da-22eb-42e8-ae52-be49ffda9300" var="variant0001" >}}
 
 Ich muss Ihnen etwas erzählen, und ich entschuldige mich vorab – denn sobald Sie das gelesen haben, werden Sie es nicht mehr vergessen können.
 
@@ -80,7 +79,7 @@ Die Zahl liegt im zweistelligen Millionenbereich. Und jedes einzelne dieser Part
 
 Sie essen nicht nur Plastik. Forscher gehen davon aus, dass sich diese Partikel im Körper ansammeln. Und die nachgewiesenen Mengen scheinen Jahr für Jahr zu wachsen.
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="7dbd2872-fa69-47d7-d8c5-674034fcdc00" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="7dbd2872-fa69-47d7-d8c5-674034fcdc00" var="variant0001" >}}
 
 ## Was Mikroplastik in Ihrem Körper anrichtet
 
@@ -100,7 +99,7 @@ Ich holte eine Handsäge aus der Garage und sägte es in zwei Hälften.
 
 ## Was ich in meinem „sauberen" Schneidebrett fand
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="34d08b07-69ae-4965-02aa-15cfcfc61f00" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="34d08b07-69ae-4965-02aa-15cfcfc61f00" var="variant0001" >}}
 
 Der Querschnitt war erschütternd. Diese leichten Messerspuren, die ich jeden Tag weggewischt hatte? Sie waren tief. Und vollgepackt mit dunklen, eingeschlossenen Rückständen. Feuchtigkeit. Alte Lebensmittelreste. Dinge, die ich nicht identifizieren konnte.
 
@@ -134,15 +133,15 @@ Titan. Dasselbe Material, das in chirurgischen Implantaten verwendet wird – Di
 
 Es ist absolut porenfrei. Es gibt keine Rillen, in denen sich Bakterien verstecken können. Nichts wird aufgesogen. Nichts wird abgegeben. Keine Partikel lösen sich. Wenn man auf Titan schneidet, ist das Einzige auf der Oberfläche das Lebensmittel selbst.
 
-Sie erzählte mir von einem Schneidebrett namens [Katori](https://track.trendreporter24.com/click) – entworfen von einem japanischen Koch, der dieses Material aus Profiküchen in normale Haushalte bringen wollte.
+Sie erzählte mir von einem Schneidebrett namens [Katori](https://track.theverydaypicks.com/click) – entworfen von einem japanischen Koch, der dieses Material aus Profiküchen in normale Haushalte bringen wollte.
 
 Ich bestellte noch in derselben Nacht eines.
 
 ## Warum Katori für mich alles verändert hat
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="acc662c9-fbe3-4895-30e8-8184f01b6700" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="acc662c9-fbe3-4895-30e8-8184f01b6700" var="variant0001" >}}
 
-Ich benutze mein [Katori](https://track.trendreporter24.com/click) jetzt seit vier Monaten. Das ist anders:
+Ich benutze mein [Katori](https://track.theverydaypicks.com/click) jetzt seit vier Monaten. Das ist anders:
 
 **Null Mikroplastik. Null.** Massives Titan in medizinischer Qualität. Kein BPA, keine Beschichtungen, keine Chemikalien. Nichts bricht ab. Nichts löst sich. Nichts geht ins Essen über. Nach allem, was ich über die Anreicherung von Polyethylen in Gehirnen und Arterien gelesen hatte, war allein das den Wechsel wert.
 
@@ -166,7 +165,7 @@ Ich bereite Essen auf einer Oberfläche zu, der ich tatsächlich vertraue. Nicht
 
 Nach allem, was ich gelernt habe, werde ich Lebensmittel nie wieder auf Plastik schneiden. Und ehrlich gesagt – ich glaube, Sie werden das auch nicht mehr, sobald Sie wissen, was ich weiß.
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="7026cde8-21b2-45d7-f7e2-514d94d0a000" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="7026cde8-21b2-45d7-f7e2-514d94d0a000" var="variant0001" >}}
 
 ## Was andere Käufer sagen
 
@@ -189,7 +188,7 @@ Dank eines kürzlich viral gegangenen Videos ist Katori ständig ausverkauft, un
 
 ## DRINGEND: Ein Sonderangebot für unsere Leser (bis zu 70 % Rabatt)
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="13e939be-8ae1-4ce0-d062-b5dd80d47c00" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="13e939be-8ae1-4ce0-d062-b5dd80d47c00" var="variant0001" >}}
 
 ### Der Hersteller führt aktuell eine große Aktion durch, um diese Bretter in mehr deutsche Haushalte zu bringen.
 
@@ -199,4 +198,4 @@ Dank eines kürzlich viral gegangenen Videos ist Katori ständig ausverkauft, un
 
 ### Klicken Sie unten, um zu prüfen, ob der 70-%-Rabatt in Ihrer Region noch aktiv ist:
 
-{{< cta-button href="https://track.trendreporter24.com/click" line1="Verfügbarkeit prüfen und 70 % Rabatt sichern" >}}
+{{< cta-button href="https://track.theverydaypicks.com/click" line1="Verfügbarkeit prüfen und 70 % Rabatt sichern" >}}

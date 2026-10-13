@@ -2,11 +2,10 @@
 title: "I Sawed My Old Cutting Board in Half. What I Found Inside Was Worse Than I Ever Expected."
 subtitle: "A study in Nature Medicine found microplastics accumulating inside human brains – and the primary plastic was polyethylene, the same material as most kitchen cutting boards. What I discovered when I cut mine open changed how my family prepares food forever."
 date: 2024-05-15
-layout: "ecom-base-01"
-
+layout: "ecom-base-13"
 advertorialDisclosure: "Advertorial"
 
-HrefCTA: "https://track.trendreporter24.com/click"
+HrefCTA: "https://track.theverydaypicks.com/click"
 stickyButtonText: "Check Availability >>"
 scrollThreshold: 3200
 
@@ -37,7 +36,7 @@ disclaimer: |
     **Sources referenced in this article:** [Bioaccumulation of microplastics in decedent human brains – Nature Medicine](https://www.nature.com/articles/s41591-024-03453-1) | [Cutting Boards: An Overlooked Source of Microplastics in Human Food? – Environmental Science & Technology](https://pubs.acs.org/doi/abs/10.1021/acs.est.3c00924) | [Microplastics linked to heart attack, stroke and death – Scientific American / NEJM](https://www.scientificamerican.com/article/microplastics-linked-to-heart-attack-stroke-and-death/) | [Microplastics and our health – Stanford Medicine](https://med.stanford.edu/news/insights/2025/01/microplastics-in-body-polluted-tiny-plastic-fragments.html) | [Microplastics exposure: implications for human fertility, pregnancy and child health – Frontiers in Endocrinology](https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2023.1330396/full)
 ---
 
-{{< shortcode-image-no-sub-hero link="https://track.trendreporter24.com/click" image_id="2d5969da-22eb-42e8-ae52-be49ffda9300" var="variant0001" >}}
+{{< shortcode-image-no-sub-hero link="https://track.theverydaypicks.com/click" image_id="2d5969da-22eb-42e8-ae52-be49ffda9300" var="variant0001" >}}
 
 I need to tell you something, and I'm sorry in advance because once you read this, you won't be able to un-know it.
 
@@ -79,7 +78,7 @@ The number is in the tens of millions. And every single one of those particles e
 
 You are not just eating plastic. Researchers believe these particles may be accumulating in the body. And the amounts detected appear to be growing year over year.
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="7dbd2872-fa69-47d7-d8c5-674034fcdc00" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="7dbd2872-fa69-47d7-d8c5-674034fcdc00" var="variant0001" >}}
 
 ## What Microplastics Are Doing Inside Your Body
 
@@ -99,7 +98,7 @@ I grabbed a hand saw from the garage and cut it in half.
 
 ## What I Found Inside My "Clean" Cutting Board
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="34d08b07-69ae-4965-02aa-15cfcfc61f00" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="34d08b07-69ae-4965-02aa-15cfcfc61f00" var="variant0001" >}}
 
 The cross-section was horrifying. Those faint knife marks I'd been wiping over every day? They were deep. And packed with dark, trapped residue. Moisture. Old food particles. Things I couldn't identify.
 
@@ -133,15 +132,15 @@ Titanium. The same material used in surgical implants – things designed to liv
 
 It's completely non-porous. There are no grooves for bacteria to hide in. Nothing absorbs. Nothing leaches. Nothing sheds particles. When you cut on titanium, the only thing on the surface is the food itself.
 
-She told me about a board called [Katori](https://track.trendreporter24.com/click) – designed by a Japanese chef who wanted to bring this material from professional kitchens into family homes.
+She told me about a board called [Katori](https://track.theverydaypicks.com/click) – designed by a Japanese chef who wanted to bring this material from professional kitchens into family homes.
 
 I ordered one that night.
 
 ## Why Katori Changed Everything for Me
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="acc662c9-fbe3-4895-30e8-8184f01b6700" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="acc662c9-fbe3-4895-30e8-8184f01b6700" var="variant0001" >}}
 
-I've been using my [Katori](https://track.trendreporter24.com/click) for four months now. Here's what's different:
+I've been using my [Katori](https://track.theverydaypicks.com/click) for four months now. Here's what's different:
 
 **Zero microplastics. Zero.** Solid medical-grade titanium. No BPA, no coatings, no chemicals. Nothing breaks off. Nothing leaches. Nothing transfers into food. After everything I'd read about polyethylene accumulating in brains and arteries, this alone was worth the switch.
 
@@ -165,7 +164,7 @@ I prepare food on a surface I actually trust. Not because a marketing label says
 
 After what I've learned, I will never cut food on plastic again. And honestly – I don't think you will either, once you know what I know.
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="7026cde8-21b2-45d7-f7e2-514d94d0a000" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="7026cde8-21b2-45d7-f7e2-514d94d0a000" var="variant0001" >}}
 
 ## What Other Buyers Are Saying
 
@@ -188,7 +187,7 @@ Thanks to a recent viral video, Katori is constantly selling out, and cheap knoc
 
 ## URGENT: A Special Offer for Our Readers (Up to 70% Off)
 
-{{< shortcode-image-no-sub link="https://track.trendreporter24.com/click" image_id="13e939be-8ae1-4ce0-d062-b5dd80d47c00" var="variant0001" >}}
+{{< shortcode-image-no-sub link="https://track.theverydaypicks.com/click" image_id="13e939be-8ae1-4ce0-d062-b5dd80d47c00" var="variant0001" >}}
 
 ### The manufacturer is currently running a major promotion to get these boards into more Canadian homes.
 
@@ -198,4 +197,4 @@ Thanks to a recent viral video, Katori is constantly selling out, and cheap knoc
 
 ### Click below to check if the 70% discount is still active in your region:
 
-{{< cta-button href="https://track.trendreporter24.com/click" line1="Check Availability and Lock In 70% Off" >}}
+{{< cta-button href="https://track.theverydaypicks.com/click" line1="Check Availability and Lock In 70% Off" >}}

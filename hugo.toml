@@ -9,3 +9,26 @@ title = 'theverydaypicks.com'
 
 [minify]
   minifyOutput = true
+
+[params]
+  [[params.footerLinks]]
+    text = "About Us"
+    url = "/about-us/"
+  [[params.footerLinks]]
+    text = "Contact"
+    url = "/contact/"
+  [[params.footerLinks]]
+    text = "Privacy Policy"
+    url = "/privacy-policy/"
+  [[params.footerLinks]]
+    text = "Cookie Policy"
+    url = "/cookie-policy/"
+  [[params.footerLinks]]
+    text = "Terms of Use"
+    url = "/terms-of-use/"
+  [[params.footerLinks]]
+    text = "Advertising Disclosure"
+    url = "/advertising-disclosure/"
+  [[params.footerLinks]]
+    text = "Legal Notice"
+    url = "/legal-notice/"

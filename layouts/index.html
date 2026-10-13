@@ -4,11 +4,6 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-MK2F4SB8');</script>
    <link rel="icon" type="image/x-icon" href="/favicon.ico">
    <title>{{ .Title }} | {{ .Site.Title }}</title>
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +29,7 @@
       a { color: var(--color-link); font-weight: 600; text-decoration: underline; }
       a:hover { text-decoration: none; }
       .page-container { flex: 1; max-width: 800px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
-      .site-logo { max-width: 200px; height: auto; margin-bottom: 1.5rem; }
+      .site-logo { display: block; max-width: 200px; height: auto; margin-bottom: 1.5rem; }
       .page-content { font-size: 1.075rem; line-height: 1.65; color: #2a2a2a; }
       .page-footer { background-color: var(--color-footer-bg); color: var(--color-footer-text); padding: 2.5rem 1rem; font-size: 1rem; }
       .footer-container { max-width: 800px; margin: 0 auto; text-align: center; }
@@ -47,10 +42,8 @@
    </style>
 </head>
 <body>
-   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK2F4SB8"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
    <div class="page-container">
-      <img src="https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/6a1977cd-c8b6-4f21-beb1-3a6e41f8b700/logo" alt="TheVeryDayPicks" class="site-logo">
+      <a href="/"><img src="https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/6a1977cd-c8b6-4f21-beb1-3a6e41f8b700/logo" alt="TheVeryDayPicks" class="site-logo"></a>
       <h1>{{ .Title }}</h1>
       <div class="page-content">
          {{ .Content }}
@@ -59,7 +52,7 @@
    <footer class="page-footer">
       <div class="footer-container">
          <nav class="footer-nav">
-            {{ range .Params.footerLinks }}
+            {{ range (.Params.footerLinks | default site.Params.footerLinks) }}
             <a href="{{ .url }}" class="footer-link">{{ .text }}</a>
             {{ end }}
          </nav>

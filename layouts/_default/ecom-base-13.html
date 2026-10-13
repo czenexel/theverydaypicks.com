@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+{{- $lang := .Params.htmlLang | default "en" -}}
+{{- $rtl := in (slice "he" "ar" "fa" "ur") $lang -}}
+<html lang="{{ $lang }}"{{ if $rtl }} dir="rtl"{{ end }}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{ .Title }}</title>
+{{ with .Params.metaDescription }}<meta name="description" content="{{ . }}">{{ end }}
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+{{ partial "arenatrack.html" . }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://imagedelivery.net">
+<link rel="dns-prefetch" href="https://video.trendreporter24.com">
+<link rel="dns-prefetch" href="https://ads.elfmedia.org">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ecom-base-13 — ecom-base-12 plus support for every other lander type
+   Everything up to the "ecom-base-13 additions" marker is ecom-base-12
+   verbatim. The additions give the same look to:
+     - legacy markdown landers (shortcode-*, cta-button, offer-box) —
+       the layout renders their title / subtitle, content goes in .prose
+     - review landers (review-* shortcodes), scoped under .prose
+     - the extended epic modules (breadcrumb, disqual, features,
+       specgrid, steps, expert, pricecard, closing)
+     - right-to-left pages (htmlLang he / ar / fa / ur)
+   Front matter on top of ecom-base-12: subtitle, rank, author, updated,
+   siteTag, metaDescription.
+   ============================================================ */
+
+:root{
+  /* ---- palette ---------------------------------------- */
+  --paper:        #ffffff;
+  --paper-soft:   #f7f8fa;
+  --paper-tint:   #f2f6fc;
+  --ink:          #14181e;
+  --ink-body:     #2b3138;
+  --ink-soft:     #667080;
+  --ink-faint:    #98a1ad;
+  --rule:         #e4e7ec;
+  --rule-strong:  #d3d8e0;
+  --accent:       #1663c7;
+  --accent-soft:  #eaf1fb;
+  /* headline <em> highlight — deliberately its own token so it can match the
+     arena layouts (ecom-base-07-arena, used by tb42) rather than the UI accent */
+  --accent-head:  #007e91;
+  --avatar:       #8b95a3;   /* muted, deliberately low-attention */
+  --go:           #2f9e44;
+  --go-dark:      #248035;
+  --bad:          #c0392b;
+  --warn-bg:      #fff9ec;
+  --warn-rule:    #f0dcae;
+  --warn-ink:     #7a5a12;
+
+  /* ---- rhythm ------------------------------------------ */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 24px; --s6: 32px; --s7: 44px; --s8: 64px;
+
+  /* ---- measure ----------------------------------------- */
+  --measure: 780px;
+  --pad: 20px;
+  --radius: 10px;
+
+  --serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+
+body{
+  font-family:var(--sans);
+  font-size:18px;
+  line-height:1.7;
+  color:var(--ink-body);
+  background:var(--paper);
+  min-width:320px;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+img{display:block;max-width:100%;height:auto}
+
+a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;font-weight:600}
+a:hover{text-decoration:none}
+
+/* ============================================================
+   CHROME — banner, masthead, footer, sticky
+   ============================================================ */
+
+.adbanner{
+  background:var(--paper-soft);
+  border-bottom:1px solid var(--rule);
+  text-align:center;
+  padding:6px var(--pad);
+}
+.adbanner .tag{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.adbanner .sep{color:var(--rule-strong);margin:0 8px}
+
+.masthead{
+  border-bottom:1px solid var(--rule);
+  padding:var(--s4) var(--pad);
+}
+.masthead .inner{
+  max-width:var(--measure);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.masthead-logo{max-width:180px;height:auto}
+.masthead .divider{width:1px;height:16px;background:var(--rule-strong);flex:none}
+.masthead .badge{
+  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-soft);white-space:nowrap;
+}
+/* category label sits beside a coloured logo — kept neutral so it reads as
+   metadata rather than competing with the brand or looking like a link */
+.masthead .kicker-tag{
+  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-soft);white-space:nowrap;
+}
+/* Masthead fit + alignment: the logo may shrink (never the tag), so the row cannot overflow on narrow
+   phones; the tag is centred on the logo's lettering, not on the image box (artwork sits above the text). */
+.masthead-logo{min-width:0;flex:0 1 auto}
+.masthead .kicker-tag{flex:none}
+
+/* Centring lives HERE and only here.
+   The container owns the measure and the auto margins, so every top-level
+   block from {{ .Content }} — .article, .body, .cta, .compare, .comments,
+   .qa, .urgency, native ads, anything added later — is centred by default.
+   Do NOT put `max-width` + `margin:auto` on the children: modules legitimately
+   set `margin: <v> 0` for vertical rhythm, which silently resets the auto
+   side-margins and drops them to the left edge. */
+.wrap{
+  max-width:calc(var(--measure) + var(--pad) * 2);
+  margin:0 auto;
+  padding:0 var(--pad);
+}
+
+/* ============================================================
+   ARTICLE HEAD — .article / .headline / .subhead / .byline / .hero
+   ============================================================ */
+
+.article{padding-top:var(--s7)}
+
+.headline{
+  font-family:var(--serif);
+  font-size:clamp(28px,5.2vw,40px);
+  line-height:1.22;
+  font-weight:700;
+  letter-spacing:-.012em;
+  color:var(--ink);
+  margin-bottom:var(--s4);
+}
+.headline em{font-style:italic;color:var(--accent-head)}
+
+.subhead{
+  font-size:clamp(17px,2.4vw,19px);
+  line-height:1.6;
+  color:var(--ink-soft);
+  font-weight:400;
+  margin-bottom:var(--s5);
+}
+
+.byline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--s4);
+  flex-wrap:wrap;
+  padding:var(--s4) 0;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  margin-bottom:var(--s6);
+}
+.byline .who{display:flex;align-items:center;gap:var(--s3)}
+.byline .av{
+  width:40px;height:40px;border-radius:50%;flex:none;
+  background:var(--avatar);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:600;letter-spacing:.02em;
+}
+.byline .author{font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
+.byline .section{font-size:13px;color:var(--ink-soft);line-height:1.4}
+.byline .stars{font-size:13px;color:var(--ink-soft)}
+.byline .stars .s{color:#f5a623;letter-spacing:.05em}
+.byline .stars b{margin-left:6px;font-weight:600;color:var(--ink-soft)}
+
+.hero{margin:0 0 var(--s6)}
+.hero .slot-hero{
+  width:100%;
+  aspect-ratio:16/9;   /* matches the 700x390 hero assets; reserves space so
+                          the headline does not jump when the image lands */
+  object-fit:cover;
+  border-radius:var(--radius);
+  background:var(--paper-soft);
+}
+.hero .caption{
+  font-size:13px;line-height:1.5;color:var(--ink-soft);
+  margin-top:var(--s2);
+}
+.hero .caption b{color:var(--ink-body)}
+
+/* ============================================================
+   BODY — .body / .lede / p / h2 / .figure / .dialog
+   ============================================================ */
+
+/* A body block ends exactly where its text ends. It must not carry bottom
+   padding or a trailing child margin: the gap to whatever follows is owned
+   by that next module's own margin-top. Leaving padding here also blocks
+   margin-collapsing, so the paragraph margin, this padding and the module
+   margin all stack into one oversized gap. */
+.body{padding-bottom:0}
+.body > *:last-child{margin-bottom:0}
+
+.body p{margin-bottom:var(--s5)}
+
+.lede{
+  font-size:clamp(19px,2.6vw,21px);
+  line-height:1.6;
+  font-weight:500;
+  color:var(--ink);
+  margin-bottom:var(--s5);
+}
+
+.body h2,
+.compare h2,
+.comments h2,
+.qa h2{
+  font-family:var(--serif);
+  font-size:clamp(22px,3.4vw,27px);
+  line-height:1.3;
+  font-weight:700;
+  letter-spacing:-.008em;
+  color:var(--ink);
+  margin:var(--s7) 0 var(--s4);
+}
+.body h2 .kicker{
+  display:block;
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:var(--s2);
+}
+
+.body strong{font-weight:700;color:var(--ink)}
+.body em{font-style:italic}
+
+.body ul,.body ol{margin:0 0 var(--s5) 22px}
+.body li{margin-bottom:var(--s2)}
+
+/* figures ------------------------------------------------- */
+.figure{margin:var(--s6) 0}
+.figure .img-slot{
+  width:100%;
+  display:block;
+  object-fit:cover;
+  border-radius:var(--radius);
+  background:var(--paper-soft);
+}
+.figure .slot-rect{aspect-ratio:4/3}
+.figure.tall .slot-rect{aspect-ratio:5/4}
+.figure video{border-radius:var(--radius)}
+
+/* Video figures on desktop.
+   epic-figure writes `aspect-ratio` as an INLINE style on the video wrapper,
+   so the page can only ask for one ratio at every breakpoint. A tall/square
+   clip that reads fine on a phone becomes a huge block in the 780px desktop
+   column, so on desktop every video is normalised to the same 4/3 the still
+   images use. Mobile keeps whatever ratio the shortcode asked for.
+   `!important` is required to beat the inline style; the `:not(.img-slot)`
+   guard keeps this off the image / empty-slot branches of the shortcode. */
+@media (min-width:641px){
+  .figure > div[style]:not(.img-slot),
+  .figure > a > div[style]:not(.img-slot){
+    aspect-ratio:4/3 !important;
+  }
+}
+.figure .cap{
+  font-size:13px;line-height:1.5;color:var(--ink-soft);
+  margin-top:var(--s2);
+}
+.figure .cap b{color:var(--ink-body)}
+
+/* pull-quote ---------------------------------------------- */
+.dialog{
+  font-family:var(--serif);
+  font-size:20px;
+  line-height:1.5;
+  font-style:italic;
+  color:var(--ink);
+  border-left:3px solid var(--accent);
+  padding:var(--s1) 0 var(--s1) var(--s5);
+  margin:var(--s6) 0;
+}
+.dialog .micro{
+  display:block;
+  margin-top:var(--s3);
+  font-family:var(--sans);
+  font-style:normal;
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink-soft);
+}
+
+/* ============================================================
+   FACTBOX — replaces the old hard-coded inline problem table
+   ============================================================ */
+
+.factbox{
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin:var(--s6) 0;
+  background:var(--paper);
+}
+.factbox .fb-head{
+  background:var(--ink);
+  color:#fff;
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:15px;
+  line-height:1.4;
+  padding:var(--s3) var(--s5);
+}
+.factbox .fb-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:var(--s4);
+  padding:var(--s3) var(--s5);
+  border-top:1px solid var(--rule);
+  font-size:15px;
+  line-height:1.5;
+}
+.factbox .fb-row:nth-child(even){background:var(--paper-soft)}
+.factbox .fb-row .k{font-weight:700;color:var(--ink);flex:none}
+.factbox .fb-row .v{color:var(--bad);text-align:right}
+
+/* ============================================================
+   CTA — .cta / .btn / .trustrow
+   ============================================================ */
+
+.cta{margin:var(--s6) 0 var(--s4);text-align:center}
+.cta .btn{
+  display:block;
+  width:100%;
+  background:var(--go);
+  color:#fff;
+  font-size:22px;
+  font-weight:700;
+  line-height:1.32;
+  letter-spacing:.005em;
+  text-decoration:none;
+  padding:19px var(--s5);
+  border-radius:var(--radius);
+  box-shadow:0 2px 0 var(--go-dark);
+  transition:background .18s ease,transform .18s ease;
+}
+.cta .btn:hover{background:var(--go-dark);transform:translateY(1px);box-shadow:0 1px 0 var(--go-dark)}
+.cta .btn .arrow{display:inline-block;margin-left:4px}
+
+.trustrow{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:var(--s2) var(--s5);
+  margin:0 0 var(--s6);
+  font-size:13px;
+  color:var(--ink-soft);
+}
+.trustrow span{display:inline-flex;align-items:center;gap:5px}
+.trustrow .ok{color:var(--go);font-weight:700}
+
+/* ============================================================
+   URGENCY
+   ============================================================ */
+
+.urgency{
+  background:var(--warn-bg);
+  border:1px solid var(--warn-rule);
+  border-radius:var(--radius);
+  padding:var(--s5);
+  margin:var(--s6) 0;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--warn-ink);
+  position:relative;
+}
+.urgency .ic{
+  display:inline-block;
+  margin-right:var(--s2);
+  font-size:17px;
+}
+/* The icon starts the box's first line whether the text arrives inline or as Markdown paragraphs
+   (a block <p> right after it would otherwise leave the icon alone on its own line). */
+.urgency .ic{float:left;line-height:calc(16px * 1.6);margin-right:13px}
+.urgency p{margin-bottom:var(--s3)}
+.urgency p:last-child{margin-bottom:0}
+.urgency strong{color:#5c440c;font-weight:700}
+.urgency a{color:#8a5a00}
+
+/* ============================================================
+   COMPARE TABLE
+   ============================================================ */
+
+.compare{margin:var(--s7) 0}
+.compare .sub{
+  font-size:15px;color:var(--ink-soft);
+  margin:calc(var(--s4) * -1) 0 var(--s4);
+}
+.compare .table-wrap{
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.compare table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.45}
+.compare thead th{
+  background:var(--paper-soft);
+  color:var(--ink-soft);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  text-align:left;
+  padding:var(--s3) var(--s4);
+  border-bottom:1px solid var(--rule);
+  vertical-align:bottom;
+}
+.compare thead th.us{
+  background:var(--accent-soft);
+  color:var(--accent);
+}
+.compare thead th.us::after{
+  display:block;
+  font-size:9px;
+  letter-spacing:.09em;
+  font-weight:800;
+  margin-top:3px;
+  opacity:.85;
+}
+.compare tbody th{
+  text-align:left;
+  font-weight:700;
+  color:var(--ink);
+  padding:var(--s3) var(--s4);
+  border-bottom:1px solid var(--rule);
+  vertical-align:top;
+  width:26%;
+}
+.compare tbody td{
+  padding:var(--s3) var(--s4);
+  border-bottom:1px solid var(--rule);
+  vertical-align:top;
+  color:var(--ink-soft);
+}
+.compare tbody td.us{
+  background:var(--accent-soft);
+  color:var(--ink);
+  font-weight:600;
+}
+.compare tbody tr:last-child th,
+.compare tbody tr:last-child td{border-bottom:0}
+.compare .x{color:var(--bad);font-weight:700;margin-right:5px}
+.compare .v{color:var(--go);font-weight:700;margin-right:5px}
+
+@media (max-width:640px){
+  .compare thead{display:none}
+  .compare table,.compare tbody,.compare tr{display:block;width:100%}
+  /* one criterion per bordered group */
+  .compare tbody tr{
+    border-bottom:1px solid var(--rule);
+    padding-bottom:var(--s3);
+  }
+  .compare tbody tr:last-child{border-bottom:0;padding-bottom:0}
+  .compare tbody th{
+    display:block;width:auto;border:0;
+    padding:var(--s4) var(--s4) var(--s2);
+    font-size:16px;
+    line-height:1.35;
+  }
+
+  /* Each cell stacks: icon in a fixed left gutter, label above value.
+     Stacked instead of three side-by-side columns because the LABEL is the
+     long part — "CUTIUM (TITANIUM)" already overflows a narrow column here,
+     and the DE/NL translations are longer still. Giving the label the full
+     remaining width means it can wrap harmlessly instead of colliding with
+     its own icon and value. */
+  .compare tbody td{
+    --cell-top:5px;               /* label and icon both key off this */
+    position:relative;
+    display:block;
+    border:0;
+    padding:var(--cell-top) var(--s4) 5px 42px;
+    font-size:15px;
+    line-height:1.45;
+    text-align:left;
+  }
+  .compare tbody td::before{
+    content:attr(data-label);
+    display:block;
+    font-size:11px;
+    font-weight:700;
+    line-height:18px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .compare tbody td .x,
+  .compare tbody td .v{
+    position:absolute;
+    left:var(--s4);
+    top:var(--cell-top);
+    width:16px;
+    margin:0;
+    font-size:13px;
+    line-height:18px;             /* == the label's line box, so they sit level */
+    text-align:center;
+  }
+
+  /* the winning row reads as one tinted band across the full card width */
+  .compare tbody td.us{
+    --cell-top:var(--s3);
+    background:var(--accent-soft);
+    margin-top:var(--s2);
+    padding-bottom:var(--s3);
+    color:var(--ink);
+    font-weight:600;
+  }
+  .compare tbody td.us::before{color:var(--accent)}
+}
+
+/* ============================================================
+   COMMENTS
+   ============================================================ */
+
+.comments{margin:var(--s7) 0}
+.comments .lead{
+  font-size:15px;color:var(--ink-soft);
+  margin:calc(var(--s4) * -1) 0 var(--s4);
+}
+.comm{
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  padding:var(--s4) var(--s5);
+  margin-bottom:var(--s3);
+  background:var(--paper);
+}
+.comm .head{
+  display:flex;
+  align-items:center;
+  gap:var(--s3);
+  margin-bottom:var(--s3);
+  flex-wrap:wrap;
+}
+.comm .av{
+  width:34px;height:34px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:14px;font-weight:700;
+}
+.comm .av.c1{background:#4a7fb5}
+.comm .av.c2{background:#6b8e5a}
+.comm .av.c3{background:#b5794a}
+.comm .av.c4{background:#8a6ba8}
+.comm .av.c5{background:#4f9a97}
+.comm .name{font-size:14px;font-weight:700;color:var(--ink);flex:1 1 auto}
+.comm .name .loc{font-weight:400;color:var(--ink-soft)}
+.comm .time{font-size:12px;color:var(--ink-faint);flex:none}
+/* body + footer indent to the avatar gutter so name / text / like share one
+   left edge instead of stepping in and out */
+.comm .text{
+  font-size:15px;line-height:1.6;color:var(--ink-body);
+  padding-left:calc(34px + var(--s3));
+}
+.comm .react{
+  display:flex;gap:var(--s4);align-items:center;
+  margin-top:var(--s3);
+  padding-left:calc(34px + var(--s3));
+  font-size:12px;color:var(--ink-faint);
+}
+.comm .react .like{font-weight:600}
+
+/* ============================================================
+   Q&A
+   ============================================================ */
+
+.qa{margin:var(--s7) 0}
+.qa details{
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  margin-bottom:var(--s2);
+  overflow:hidden;
+  background:var(--paper);
+}
+.qa summary{
+  cursor:pointer;
+  list-style:none;
+  padding:var(--s4) var(--s5);
+  font-size:16px;
+  font-weight:600;
+  color:var(--ink);
+  position:relative;
+  padding-right:48px;
+  transition:background .15s ease;
+}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary:hover{background:var(--paper-soft)}
+.qa summary::after{
+  content:"+";
+  position:absolute;
+  right:var(--s5);
+  top:50%;
+  transform:translateY(-50%);
+  font-size:22px;
+  font-weight:400;
+  color:var(--accent);
+  line-height:1;
+}
+.qa details[open] summary{background:var(--paper-soft);border-bottom:1px solid var(--rule)}
+.qa details[open] summary::after{content:"–"}
+.qa .ans{
+  padding:var(--s4) var(--s5);
+  font-size:15px;
+  line-height:1.65;
+  color:var(--ink-body);
+}
+
+/* ============================================================
+   NATIVE ADS (elfmedia widget — font/colour only)
+   ============================================================ */
+
+.elf-native-ads{font-family:var(--sans);color:var(--ink-body);margin:var(--s7) 0}
+/* Own the width: without it widget.js shrinks itself to the inner width of the
+   block above (e.g. .urgency) and, with margin:v 0, sits short of the column on mobile. */
+.elf-native-ads{max-width:100%}
+.elf-native-ads .elf-ads-heading{
+  font-family:var(--serif);font-weight:700;line-height:1.3;color:var(--ink);
+}
+.elf-native-ads .elf-ad-card{color:var(--ink-body)}
+.elf-native-ads .elf-ad-headline{
+  font-family:var(--sans);font-weight:600;font-size:15px;line-height:1.45;color:var(--ink-body);
+}
+.elf-native-ads .elf-ad-card:hover .elf-ad-headline{color:var(--accent)}
+
+/* ============================================================
+   FOOTER + DISCLAIMER
+   ============================================================ */
+
+.legal{
+  background:var(--paper-soft);
+  border-top:1px solid var(--rule);
+  margin-top:var(--s8);
+  padding:var(--s7) var(--pad) calc(var(--s8) + 40px);
+}
+.legal .inner{max-width:var(--measure);margin:0 auto;text-align:center}
+.legal-nav{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:var(--s3) var(--s5);
+  margin-bottom:var(--s5);
+}
+.legal-nav a{
+  font-size:14px;font-weight:500;color:var(--ink-soft);text-decoration:none;
+}
+.legal-nav a:hover{color:var(--accent);text-decoration:underline}
+
+.disclaimer{
+  font-size:11px;
+  line-height:1.65;
+  color:var(--ink-faint);
+  text-align:left;
+  border-top:1px solid var(--rule-strong);
+  padding-top:var(--s5);
+  margin-top:var(--s5);
+}
+.disclaimer h4{
+  font-family:var(--sans);
+  font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--ink-soft);margin-bottom:var(--s2);
+}
+.disclaimer p{margin-bottom:var(--s3)}
+.disclaimer ol{margin:0 0 var(--s3) 18px}
+.disclaimer li{margin-bottom:5px}
+.disclaimer a{color:var(--ink-soft);font-weight:400;word-break:break-word}
+
+.copyright{
+  font-size:12px;color:var(--ink-faint);
+  margin-top:var(--s5);
+}
+
+/* ============================================================
+   STICKY BAR
+   ============================================================ */
+
+/* mobile only, and it is nothing but the button: edge to edge, no card,
+   no chrome around it */
+.stickybar{
+  position:fixed;
+  left:0;right:0;bottom:0;
+  z-index:9999;
+  transform:translateY(110%);
+  transition:transform .26s ease;
+}
+.stickybar.show{transform:translateY(0)}
+.stickybar .btn-sm{
+  display:block;
+  width:100%;
+  background:var(--go);
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  line-height:1.3;
+  text-align:center;
+  text-decoration:none;
+  padding:17px var(--s4);
+  padding-bottom:calc(17px + env(safe-area-inset-bottom,0px));
+  border-radius:0;
+}
+.stickybar .btn-sm:active{background:var(--go-dark)}
+
+/* desktop has the inline CTAs; no sticky bar */
+@media (min-width:641px){
+  .stickybar{display:none}
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width:640px){
+  body{font-size:17px}
+  .article{padding-top:var(--s5)}
+  .hero{
+    /* let the hero breathe edge-to-edge on phones */
+    margin-left:calc(var(--pad) * -1);
+    margin-right:calc(var(--pad) * -1);
+  }
+  .hero .slot-hero{border-radius:0}
+  .comm,.qa summary,.qa .ans{padding-left:var(--s4);padding-right:var(--s4)}
+  .factbox .fb-head,.factbox .fb-row{padding-left:var(--s4);padding-right:var(--s4)}
+  .factbox .fb-row{flex-direction:column;gap:2px}
+  .factbox .fb-row .v{text-align:left}
+  .urgency{padding:var(--s4)}
+  .cta .btn{font-size:19px;padding:17px var(--s4)}
+}
+
+@media (min-width:641px){
+  body{font-size:19px}
+
+  /* --- condensed above the fold -------------------------------
+     the masthead -> headline -> subhead -> byline -> hero run is
+     tightened so the lede sits higher in the first screen        */
+  .article{padding-top:var(--s5)}
+  .headline{margin-bottom:var(--s3)}
+  .subhead{margin-bottom:var(--s4)}
+  .byline{
+    padding:var(--s3) 0;
+    margin-bottom:var(--s4);
+  }
+  .byline .av{width:36px;height:36px;font-size:13px}
+  .hero{margin-bottom:var(--s5)}
+  .lede{margin-top:var(--s5)}
+}
+
+/* respect users who ask for less motion */
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;scroll-behavior:auto !important}
+}
+
+/* ============================================================
+   ecom-base-13 additions — everything below is new; the rules
+   above are ecom-base-12 unchanged
+   ============================================================ */
+
+/* ---- page head: non-epic landers get title / subtitle from front matter */
+.pagehead{
+  border-bottom:1px solid var(--rule);
+  padding-bottom:var(--s5);
+  margin-bottom:var(--s5);
+}
+.pagehead .subhead{margin-bottom:0}
+.pagemeta{font-size:14px;line-height:1.5;color:var(--ink-soft);margin-top:var(--s3)}
+.pagemeta b{font-weight:700;color:var(--ink)}
+.pagemeta .sep{margin:0 8px;color:var(--rule-strong)}
+.rank-badge{
+  display:inline-block;
+  background:var(--warn-bg);border:1px solid var(--warn-rule);color:var(--warn-ink);
+  font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:4px 12px;border-radius:999px;
+  margin-bottom:var(--s3);
+}
+
+/* ---- prose: plain markdown bodies, typeset like .body -------- */
+/* bare URLs (e.g. review reference lists) must wrap, not widen the page */
+.prose{overflow-wrap:break-word}
+.prose > *:last-child{margin-bottom:0}
+.prose p{margin-bottom:var(--s5)}
+.prose h2{
+  font-family:var(--serif);
+  font-size:clamp(22px,3.4vw,27px);
+  line-height:1.3;
+  font-weight:700;
+  letter-spacing:-.008em;
+  color:var(--ink);
+  margin:var(--s7) 0 var(--s4);
+}
+.prose h3{
+  font-family:var(--serif);
+  font-size:clamp(19px,2.6vw,22px);
+  line-height:1.35;
+  font-weight:700;
+  color:var(--ink);
+  margin:var(--s6) 0 var(--s3);
+}
+.prose strong,.prose b{font-weight:700;color:var(--ink)}
+.prose em{font-style:italic}
+.prose del{color:var(--ink-soft)}
+.prose ul,.prose ol{margin:0 0 var(--s5) 22px}
+.prose li{margin-bottom:var(--s2)}
+.prose blockquote{
+  background:var(--paper-soft);
+  border-left:3px solid var(--accent);
+  border-radius:0 var(--radius) var(--radius) 0;
+  padding:var(--s4) var(--s5);
+  margin:var(--s5) 0;
+  font-size:.94em;
+}
+.prose blockquote p{margin-bottom:var(--s3)}
+.prose blockquote > *:last-child{margin-bottom:0}
+.prose hr{border:0;border-top:1px solid var(--rule);margin:var(--s6) 0}
+.prose figure,.prose .figure img{border-radius:var(--radius)}
+
+/* responsive iframe / video wrappers written inline in the markdown */
+.prose div[style*="padding-top"]{border-radius:var(--radius);overflow:hidden;margin-bottom:var(--s5)}
+
+/* ---- legacy shortcodes: images ------------------------------- */
+.d-block{display:block}
+.my-4{margin:var(--s5) 0}
+/* !important: the shortcode writes an inline margin-bottom on the <img>;
+   the wrapping .my-4 link owns the spacing instead */
+.prose .content-img{
+  width:100%;
+  margin:0 !important;
+  border-radius:var(--radius);
+  background:var(--paper-soft);
+}
+
+/* ---- legacy shortcodes: cta-button (same look as .cta .btn) -- */
+.cta-button-wrapper{margin:var(--s6) 0 var(--s5);text-align:center}
+.custom-cta-button{
+  display:block;
+  width:100%;
+  background:var(--go);
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  padding:19px var(--s5);
+  border-radius:var(--radius);
+  box-shadow:0 2px 0 var(--go-dark);
+  transition:background .18s ease,transform .18s ease;
+}
+.custom-cta-button:hover{background:var(--go-dark);transform:translateY(1px);box-shadow:0 1px 0 var(--go-dark)}
+.custom-cta-button span{display:block}
+.custom-cta-button-line1{font-size:22px;font-weight:700;line-height:1.32}
+.custom-cta-button-line2{font-size:15px;font-weight:500;line-height:1.4;opacity:.92;margin-top:4px}
+
+/* ---- legacy: offer box --------------------------------------- */
+.offer-box{
+  background:var(--warn-bg);
+  border:2px dashed #e0b43a;
+  border-radius:var(--radius);
+  padding:var(--s1) var(--s5) var(--s5);
+  margin:var(--s6) 0;
+}
+.prose .offer-box h2{margin-top:var(--s5)}
+.offer-box > *:last-child{margin-bottom:0}
+
+/* ---- legacy: testimonials ------------------------------------ */
+.testimonial-container-custom{margin:var(--s5) 0}
+.testimonial-box-custom{
+  background:var(--paper-soft);
+  border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius);
+  padding:var(--s4) var(--s5);
+  margin-bottom:var(--s3);
+}
+.prose .testimonial-text-custom{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:17px;
+  line-height:1.6;
+  color:var(--ink);
+  margin:0 0 var(--s2);
+}
+.prose .testimonial-author-custom{font-size:14px;line-height:1.4;color:var(--ink-soft);margin:0}
+.testimonial-box-photo{display:flex;gap:var(--s5);align-items:stretch}
+.testimonial-box-photo .testimonial-photo{flex:0 0 38%;max-width:240px}
+.testimonial-box-photo .testimonial-photo img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius)}
+.testimonial-box-photo .testimonial-content{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.prose .testimonial-box-photo .testimonial-author-custom{font-size:16px;margin-bottom:var(--s2)}
+.testimonial-rating{white-space:nowrap}
+
+/* ---- legacy: problem table (same look as .factbox) ----------- */
+.problem-table{
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin:var(--s6) 0;
+}
+.problem-table__title{
+  background:var(--ink);
+  color:#fff;
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:15px;
+  line-height:1.4;
+  padding:var(--s3) var(--s5);
+}
+.problem-table__row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:var(--s4);
+  padding:var(--s3) var(--s5);
+  border-top:1px solid var(--rule);
+  font-size:15px;
+  line-height:1.5;
+}
+.problem-table__row:nth-child(even){background:var(--paper-soft)}
+.problem-table__label{font-weight:700;color:var(--ink);flex:none}
+.problem-table__value{color:var(--bad);text-align:right}
+
+/* ---- legacy: compare table (same look as .compare) ----------- */
+.compare-table{
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin:var(--s6) 0;
+}
+.compare-table table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.45}
+.compare-table th{
+  background:var(--paper-soft);
+  color:var(--ink-soft);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  text-align:center;
+  padding:var(--s3) var(--s2);
+  vertical-align:bottom;
+}
+.compare-table th.compare-table__hi{background:var(--accent-soft);color:var(--accent)}
+.compare-table td{
+  padding:var(--s3) var(--s2);
+  text-align:center;
+  border-top:1px solid var(--rule);
+  color:var(--ink-soft);
+  vertical-align:top;
+}
+.compare-table th.compare-table__feature,
+.compare-table td.compare-table__feature{text-align:left;padding-left:var(--s4)}
+.compare-table td.compare-table__feature{font-weight:700;color:var(--ink)}
+.compare-table td.compare-table__hi{background:var(--accent-soft)}
+.compare-table td.is-yes{color:var(--go);font-weight:700}
+.compare-table td.is-no{color:var(--bad);font-weight:700}
+.compare-table__note{display:block;font-size:12px;font-weight:400;color:var(--ink-soft)}
+
+/* ---- extended epic modules ----------------------------------- */
+.headline .no{
+  background:var(--ink);color:#fff;font-style:normal;
+  padding:0 .14em;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+
+.breadcrumb{
+  display:flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent-head);
+  margin-bottom:var(--s4);
+}
+.breadcrumb .dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+
+.disqual{
+  background:var(--warn-bg);
+  border:1px solid var(--warn-rule);
+  border-left:4px solid #c98a0c;
+  border-radius:var(--radius);
+  padding:var(--s5);
+  margin:var(--s6) 0;
+  font-size:17px;
+  line-height:1.6;
+}
+.disqual .label{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--warn-ink);
+  margin-bottom:var(--s2);
+}
+.disqual .label::before{content:"";width:8px;height:8px;border-radius:50%;background:#c98a0c;flex:none}
+.disqual p{margin-bottom:var(--s3)}
+.disqual > *:last-child{margin-bottom:0}
+
+.features{
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin:var(--s6) 0;
+}
+.features .ft{
+  display:flex;gap:var(--s3);align-items:flex-start;
+  padding:var(--s4) var(--s5);
+  border-top:1px solid var(--rule);
+  font-size:16px;line-height:1.5;
+}
+.features .ft:first-child{border-top:0}
+.features .ft:nth-child(even){background:var(--paper-soft)}
+.features .ft .ic{
+  flex:0 0 24px;height:24px;margin-top:1px;
+  border-radius:50%;background:var(--go);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;
+}
+.features .ft b{font-weight:700;color:var(--ink)}
+.features .ft .k{display:block;font-size:14px;color:var(--ink-soft);margin-top:2px}
+
+/* section heads shared by specgrid / steps */
+.specgrid,.steps{margin:var(--s7) 0}
+.specgrid .top,.steps .top{text-align:center;margin-bottom:var(--s5)}
+.specgrid .top .kicker,.steps .top .kicker,.expert .kicker{
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:var(--s2);
+}
+.specgrid .top h2,.steps .top h2{
+  font-family:var(--serif);
+  font-size:clamp(22px,3.4vw,27px);
+  line-height:1.3;
+  font-weight:700;
+  color:var(--ink);
+}
+.specgrid .top p{font-size:16px;color:var(--ink-soft);margin-top:var(--s2)}
+
+/* the 780px column is too narrow for 07's three-column spec grid:
+   product image on top, the two card columns side by side below it */
+.specgrid .layout{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
+.specgrid .center{grid-column:1 / -1;order:-1;display:flex;justify-content:center}
+.specgrid .center > *{width:100%;max-width:420px}
+.specgrid .col{display:flex;flex-direction:column;gap:var(--s4)}
+.specgrid .card{
+  flex:1;
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  padding:var(--s4);
+}
+.specgrid .card .ic{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--accent-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+  margin-bottom:var(--s2);
+}
+.specgrid .card .t{font-size:16px;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:2px}
+.specgrid .card .d{font-size:14px;line-height:1.5;color:var(--ink-soft)}
+.slot-product{width:100%;aspect-ratio:4/3;object-fit:contain}
+
+.steps .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
+.step{
+  display:flex;flex-direction:column;
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.step .img-slot{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:0;background:var(--paper-soft)}
+.step .body{padding:var(--s4)}
+.step h3{font-family:var(--serif);font-size:18px;line-height:1.3;font-weight:700;color:var(--ink);margin-bottom:var(--s2)}
+.step .body p{font-size:15px;line-height:1.55;color:var(--ink-soft);margin:0}
+
+.expert{
+  display:grid;grid-template-columns:200px 1fr;gap:var(--s5);align-items:center;
+  background:var(--paper-soft);
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  padding:var(--s5);
+  margin:var(--s7) 0;
+}
+.slot-expert{width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--radius)}
+.expert .text h3{font-family:var(--serif);font-size:22px;line-height:1.3;font-weight:700;color:var(--ink)}
+.expert .text .role{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:var(--s3)}
+.expert .text blockquote{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.55;color:var(--ink);margin-bottom:var(--s3)}
+.expert .text .sig{font-family:"Brush Script MT","Lucida Handwriting",cursive;font-size:26px;line-height:1.2;color:var(--ink)}
+.expert .text .name{font-size:13px;font-weight:700;color:var(--ink-soft)}
+
+.pricewrap{margin:var(--s7) 0}
+.pricewrap h2{
+  font-family:var(--serif);
+  font-size:clamp(22px,3.4vw,27px);
+  line-height:1.3;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:var(--s4);
+}
+.pricewrap p{margin-bottom:var(--s4)}
+.founderquote{
+  font-family:var(--serif);font-style:italic;
+  font-size:19px;line-height:1.5;color:var(--ink);
+  border-left:3px solid var(--accent);
+  padding:var(--s1) 0 var(--s1) var(--s5);
+  margin:var(--s5) 0;
+}
+.founderquote cite{
+  display:block;margin-top:var(--s3);
+  font-family:var(--sans);font-style:normal;font-size:13px;font-weight:600;color:var(--ink-soft);
+}
+.pricecard{
+  background:var(--paper-tint);
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  padding:var(--s5);
+  margin:var(--s5) 0;
+  text-align:center;
+}
+.pricecard .row{display:flex;flex-wrap:wrap;gap:var(--s4);align-items:center;justify-content:center}
+.pricecard .anchor{font-size:20px;color:var(--ink-faint);text-decoration:line-through}
+.pricecard .now{font-family:var(--serif);font-size:48px;font-weight:700;line-height:1;color:var(--ink)}
+.pricecard .now sup{font-size:20px;vertical-align:top;margin-left:2px}
+.pricecard .badge{
+  background:var(--bad);color:#fff;
+  font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 12px;border-radius:999px;
+}
+.pricecard .pack{margin-top:var(--s3);font-size:15px;color:var(--ink-soft)}
+.pricecard .pack b{color:var(--ink)}
+
+.closing{margin:var(--s7) 0 0;text-align:center}
+.closing .lines{font-family:var(--serif);font-size:clamp(22px,3.6vw,30px);line-height:1.3;font-weight:700;color:var(--ink)}
+.closing .lines span{display:block}
+.closing .lines .last{font-style:italic;color:var(--accent-head)}
+
+/* ---- review landers (review-* shortcodes), scoped to .prose so
+        .hero / .cta / .figure do not collide with the epic modules */
+.prose .hero{
+  border:1px solid var(--rule);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin:0 0 var(--s6);
+}
+.prose .hero .top{display:flex;flex-wrap:wrap;gap:var(--s5);align-items:flex-start;background:var(--paper-soft);padding:var(--s5)}
+.prose .hero .ph{flex:0 0 220px;max-width:220px}
+.prose .hero .ph img{border-radius:var(--radius)}
+.prose .hero .info{flex:1;min-width:240px}
+.prose .hero .info p{font-size:16px;line-height:1.55;margin-bottom:var(--s3)}
+.prose .hero .rate{
+  display:flex;align-items:center;gap:var(--s3);
+  padding-bottom:var(--s3);margin-bottom:var(--s3);
+  border-bottom:1px solid var(--rule);
+}
+.prose .hero .rate-num{display:flex;align-items:baseline;gap:4px}
+.prose .hero .rate-num .n{font-family:var(--serif);font-size:36px;font-weight:700;line-height:.9;color:var(--ink)}
+.prose .hero .rate-num .of{font-size:14px;font-weight:600;color:var(--ink-soft)}
+.prose .hero .rate-meta{display:flex;flex-direction:column;gap:4px}
+.prose .hero .rate-stars{color:#f5a623;letter-spacing:2px;line-height:1}
+.prose .hero .rate-badge{
+  align-self:flex-start;
+  background:#e8f6ee;border:1px solid #c4e6d1;color:var(--go-dark);
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:1px 8px;border-radius:5px;
+}
+.prose .hero .info ul{list-style:none;margin:var(--s3) 0 0}
+.prose .hero .info li{position:relative;padding-left:26px;font-size:15px;line-height:1.45}
+.prose .hero .info li::before{content:"✓";position:absolute;left:0;color:var(--go);font-weight:700}
+.prose .hero .cta-wrap{padding:var(--s4) var(--s5) var(--s5)}
+
+/* review CTAs are a bare <a class="cta">; in ecom-base-12 .cta is the
+   wrapper around .btn, so the button look is restated here */
+.prose a.cta{
+  display:block;
+  background:var(--go);
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  font-size:21px;
+  font-weight:700;
+  line-height:1.3;
+  padding:17px var(--s5);
+  border-radius:var(--radius);
+  box-shadow:0 2px 0 var(--go-dark);
+  margin:var(--s6) 0;
+  transition:background .18s ease;
+}
+.prose a.cta:hover{background:var(--go-dark)}
+.prose a.cta .sub{display:block;font-size:13px;font-weight:500;opacity:.9;margin-top:2px}
+.prose a.cta.small{max-width:440px;margin-left:auto;margin-right:auto}
+.prose .hero a.cta{margin:0}
+.prose .verdict a.cta{margin:var(--s4) 0 0}
+
+.prose .stars{display:flex;align-items:center;gap:var(--s2);line-height:1}
+.prose .stars .st{color:#f5a623;font-size:18px;letter-spacing:2px}
+.prose .stars b{font-size:17px;color:var(--ink)}
+.prose .stars .out{font-size:14px;font-weight:600;color:var(--ink-soft)}
+
+.prose .featurelist ul{list-style:none;margin:var(--s4) 0 var(--s5)}
+.prose .featurelist li{position:relative;padding:var(--s2) 0 var(--s2) 28px;border-bottom:1px solid var(--rule);margin:0}
+.prose .featurelist li::before{content:"◆";position:absolute;left:4px;color:var(--accent)}
+
+.prose .infobox{border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;margin:var(--s6) 0}
+.prose .infobox .h{background:var(--ink);color:#fff;font-family:var(--serif);font-weight:700;font-size:15px;padding:var(--s3) var(--s5)}
+.prose .infobox .row{
+  display:flex;justify-content:space-between;gap:var(--s4);
+  padding:var(--s3) var(--s5);
+  border-top:1px solid var(--rule);
+  font-size:15px;line-height:1.5;
+}
+.prose .infobox .row:nth-child(odd){background:var(--paper-soft)}
+.prose .infobox .row span:first-child{color:var(--ink-soft)}
+.prose .infobox .row span:last-child{font-weight:700;color:var(--ink);text-align:right}
+
+.prose .scorecard{border:1px solid var(--rule);border-radius:var(--radius);background:var(--paper-soft);padding:var(--s5);margin:var(--s6) 0}
+.prose .scorecard .sc-h{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);margin-bottom:var(--s3)}
+.prose .score-row{display:grid;grid-template-columns:160px 1fr 44px;gap:var(--s3);align-items:center;margin:var(--s2) 0;font-size:14px}
+.prose .score-row .lbl{color:var(--ink)}
+.prose .score-row .bar{height:10px;border-radius:5px;background:var(--rule);overflow:hidden}
+.prose .score-row .bar i{display:block;height:100%;border-radius:5px;background:var(--go)}
+.prose .score-row .pct{font-weight:700;text-align:right;color:var(--ink)}
+
+.prose .proscons{display:flex;flex-wrap:wrap;gap:var(--s4);margin:var(--s6) 0}
+.prose .proscons .col{flex:1;min-width:240px;border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
+.prose .proscons .h{padding:var(--s3) var(--s4);font-size:15px;font-weight:700;color:#fff}
+.prose .proscons .pros .h{background:var(--go)}
+.prose .proscons .cons .h{background:var(--bad)}
+.prose .proscons ul{list-style:none;margin:0;padding:var(--s3) var(--s4)}
+.prose .proscons li{position:relative;padding-left:24px;font-size:15px;line-height:1.5}
+.prose .proscons .pros li::before{content:"✓";position:absolute;left:0;color:var(--go);font-weight:700}
+.prose .proscons .cons li::before{content:"✕";position:absolute;left:0;color:var(--bad);font-weight:700}
+
+.prose .testis{display:flex;flex-wrap:wrap;gap:var(--s3);margin:var(--s6) 0}
+.prose .testis .t{flex:1;min-width:200px;background:var(--paper-soft);border:1px solid var(--rule);border-radius:var(--radius);padding:var(--s4);font-size:15px;line-height:1.55}
+.prose .testis .t p{margin-bottom:var(--s2)}
+.prose .testis .s{color:#f5a623;letter-spacing:2px;margin-bottom:var(--s2)}
+.prose .testis .n{font-size:14px;font-weight:700;color:var(--ink)}
+
+.prose .faq{border-top:1px solid var(--rule);padding:var(--s4) 0}
+.prose .faq .q{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:var(--s1)}
+.prose .faq .a p{font-size:16px;margin-bottom:0}
+
+.prose .verdict{border:2px solid var(--go);border-radius:var(--radius);background:#f3faf5;padding:var(--s5);margin:var(--s6) 0}
+.prose .verdict h2{margin-top:0}
+.prose .instock{
+  display:inline-block;
+  background:#e5f7ee;border:1px solid #bfe6cf;color:var(--go-dark);
+  font-size:13px;font-weight:700;
+  padding:3px 12px;border-radius:999px;
+}
+
+/* ---- right-to-left pages ------------------------------------- */
+[dir=rtl] .body ul,[dir=rtl] .body ol,
+[dir=rtl] .prose ul,[dir=rtl] .prose ol{margin:0 22px var(--s5) 0}
+[dir=rtl] .dialog,[dir=rtl] .founderquote{border-left:0;border-right:3px solid var(--accent);padding:var(--s1) var(--s5) var(--s1) 0}
+[dir=rtl] .prose blockquote{border-left:0;border-right:3px solid var(--accent);border-radius:var(--radius) 0 0 var(--radius)}
+[dir=rtl] .urgency .ic{float:right;margin-right:0;margin-left:13px}
+[dir=rtl] .qa summary{padding-right:var(--s5);padding-left:48px}
+[dir=rtl] .qa summary::after{right:auto;left:var(--s5)}
+[dir=rtl] .comm .text,[dir=rtl] .comm .react{padding-left:0;padding-right:calc(34px + var(--s3))}
+[dir=rtl] .compare thead th,[dir=rtl] .compare tbody th{text-align:right}
+[dir=rtl] .compare .x,[dir=rtl] .compare .v{margin-right:0;margin-left:5px}
+[dir=rtl] .factbox .fb-row .v,[dir=rtl] .problem-table__value{text-align:left}
+[dir=rtl] .disclaimer{text-align:right}
+[dir=rtl] .disclaimer ol{margin:0 18px var(--s3) 0}
+[dir=rtl] .disqual{border-left:1px solid var(--warn-rule);border-right:4px solid #c98a0c}
+
+/* ---- responsive ---------------------------------------------- */
+@media (max-width:640px){
+  .problem-table__title,.problem-table__row{padding-left:var(--s4);padding-right:var(--s4)}
+  .problem-table__row{flex-direction:column;gap:2px}
+  .problem-table__value{text-align:left}
+  .compare-table table{font-size:13px}
+  .compare-table th,.compare-table td{padding-left:6px;padding-right:6px}
+  .custom-cta-button{padding:17px var(--s4)}
+  .custom-cta-button-line1{font-size:19px}
+  .offer-box{padding:var(--s1) var(--s4) var(--s4)}
+  .testimonial-box-custom{padding:var(--s4)}
+  .testimonial-box-photo{flex-direction:column;gap:var(--s3)}
+  .testimonial-box-photo .testimonial-photo{flex:none;max-width:100%}
+  .testimonial-box-photo .testimonial-photo img{max-height:260px}
+  .disqual{padding:var(--s4)}
+  .features .ft{padding:var(--s3) var(--s4)}
+  .specgrid .layout{grid-template-columns:1fr}
+  .steps .grid{grid-template-columns:1fr}
+  .expert{grid-template-columns:1fr;gap:var(--s4);padding:var(--s4)}
+  .slot-expert{max-width:160px}
+  .pricecard .now{font-size:40px}
+  .prose .hero .top{flex-direction:column;align-items:center;text-align:center;padding:var(--s4)}
+  .prose .hero .ph{flex:none}
+  .prose .hero .rate{justify-content:center}
+  .prose .hero .info{min-width:0;width:100%}
+  .prose .hero .info li{text-align:left}
+  .prose .hero .cta-wrap{padding:var(--s4)}
+  .prose a.cta{font-size:19px;padding:15px var(--s4)}
+  .prose .score-row{grid-template-columns:110px 1fr 40px}
+  .prose .infobox .h,.prose .infobox .row{padding-left:var(--s4);padding-right:var(--s4)}
+  [dir=rtl] .compare tbody td{padding:var(--cell-top) 42px 5px var(--s4);text-align:right}
+  [dir=rtl] .compare tbody td .x,[dir=rtl] .compare tbody td .v{left:auto;right:var(--s4)}
+  [dir=rtl] .factbox .fb-row .v,[dir=rtl] .problem-table__value{text-align:right}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== ADVERTORIAL BANNER ===== -->
+{{ with .Params.advertorialDisclosure }}
+<div class="adbanner">
+  <span class="tag">{{ . }}</span>
+  {{ with $.Params.advertorialTag }}<span class="sep">·</span><span class="tag">{{ . }}</span>{{ end }}
+</div>
+{{ end }}
+
+<!-- ===== MASTHEAD ===== -->
+<div class="masthead">
+  <div class="inner">
+    <img class="masthead-logo"
+         src="{{ .Params.logo | default "https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/6a1977cd-c8b6-4f21-beb1-3a6e41f8b700/logo" }}"
+         alt="{{ .Site.Title }}">
+    {{ with .Params.countryName }}<div class="divider"></div><span class="badge">{{ . }}</span>{{ end }}
+    {{ with .Params.categoryTag | default .Params.siteTag }}<span class="kicker-tag">{{ . }}</span>{{ end }}
+  </div>
+</div>
+
+<!-- ===== CONTENT (markdown + epic-* shortcodes) ===== -->
+<main class="wrap">
+{{- /* epic-* pages bring their own headline; every other lander type gets
+       its title / subtitle rendered here and its markdown wrapped in .prose */ -}}
+{{ if in (string .Content) "class=\"headline\"" }}
+{{ .Content }}
+{{ else }}
+<header class="article pagehead">
+  {{ with .Params.rank }}<div class="rank-badge">{{ . }}</div>{{ end }}
+  <h1 class="headline">{{ .Title }}</h1>
+  {{ with .Params.subtitle }}<p class="subhead">{{ . }}</p>{{ end }}
+  {{ if or .Params.author .Params.updated }}
+  <div class="pagemeta">{{ with .Params.author }}<b>{{ . }}</b>{{ end }}{{ if and .Params.author .Params.updated }}<span class="sep">·</span>{{ end }}{{ .Params.updated }}</div>
+  {{ end }}
+</header>
+<div class="prose">
+{{ .Content }}
+</div>
+{{ end }}
+</main>
+
+<!-- ===== LEGAL FOOTER ===== -->
+<footer class="legal">
+  <div class="inner">
+    {{ with .Params.footerLinks }}
+    <nav class="legal-nav">
+      {{ range . }}<a href="{{ .url }}">{{ .text }}</a>{{ end }}
+    </nav>
+    {{ end }}
+    {{ with .Params.disclaimer }}
+    <div class="disclaimer">{{ . | $.Page.RenderString }}</div>
+    {{ end }}
+    <div class="copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }}</div>
+  </div>
+</footer>
+
+<!-- ===== STICKY BAR ===== -->
+{{ with .Params.stickyButtonText }}
+<div id="sticky" class="stickybar">
+  <a href="{{ $.Params.HrefCTA | default "#" }}" target="_blank" rel="noopener" ctr-type-link="external" class="btn-sm">{{ . }}</a>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('sticky');if(!b)return;
+  var th={{ $.Params.scrollThreshold | default 1200 }};
+  var f=document.querySelector('footer.legal');
+  function t(){
+    var past=window.scrollY>th;
+    var atFooter=f&&(window.scrollY+window.innerHeight)>=(f.offsetTop+120);
+    if(past&&!atFooter){b.classList.add('show');}else{b.classList.remove('show');}
+  }
+  window.addEventListener('scroll',t,{passive:true});
+  window.addEventListener('resize',t,{passive:true});
+  t();
+})();
+</script>
+{{ end }}
+
+<!-- ===== LAZY VIDEO ===== -->
+<script>
+(function(){
+  var vids=document.querySelectorAll('video[data-src]');
+  if(!vids.length)return;
+  function start(v){
+    if(!v.getAttribute('src')){v.src=v.getAttribute('data-src');}
+    var p=v.play();if(p&&p.catch)p.catch(function(){});
+  }
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<vids.length;i++)start(vids[i]);
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    for(var i=0;i<entries.length;i++){
+      var v=entries[i].target;
+      if(entries[i].isIntersecting){start(v);}
+      else if(v.getAttribute('src')){v.pause();}
+    }
+  },{rootMargin:'300px 0px'});
+  for(var i=0;i<vids.length;i++)io.observe(vids[i]);
+})();
+</script>
+
+</body>
+</html>

@@ -7,9 +7,9 @@ hidedisclosure: true
 
 
 We look forward to hearing from you! Whether you have a question, would like to make a suggestion or simply want to share your story, your thoughts are always welcome at theverydaypicks.com.
-<br>
 
-Contact information:
-theverydaypicks.com
-UAB Rara Digital, Gedimino pr., 20, Vilnius, Lithuania, 01103
+**Contact information:**
+
+theverydaypicks.com<br>
+Owned and operated from the United Arab Emirates<br>
 E-mail: support@theverydaypicks.com
