@@ -1,0 +1,22 @@
+{{- $d := .Inner | transform.Unmarshal -}}
+{{- $var := $d.var | default "variant0001" -}}
+{{- $src := $d.img -}}
+{{- if $d.image_id }}{{ $src = printf "https://imagedelivery.net/ARaXQ-_BUK-z-dKds3F61Q/%s/%s" $d.image_id $var }}{{ end -}}
+<div class="specgrid">
+  <div class="top">
+    {{ with $d.kicker }}<div class="kicker">{{ . }}</div>{{ end }}
+    <h2>{{ $d.title }}</h2>
+    {{ with $d.subtitle }}<p>{{ . }}</p>{{ end }}
+  </div>
+  <div class="layout">
+    <div class="col">
+      {{- range $d.left -}}<div class="card"><div class="ic">{{ .icon }}</div><div class="t">{{ .title }}</div><div class="d">{{ .desc }}</div></div>{{- end -}}
+    </div>
+    <div class="center">
+      {{ if $src }}<img class="img-slot slot-product" src="{{ $src }}" alt="{{ $d.alt }}" loading="lazy">{{ else }}<div class="img-slot slot-product"></div>{{ end }}
+    </div>
+    <div class="col">
+      {{- range $d.right -}}<div class="card"><div class="ic">{{ .icon }}</div><div class="t">{{ .title }}</div><div class="d">{{ .desc }}</div></div>{{- end -}}
+    </div>
+  </div>
+</div>
