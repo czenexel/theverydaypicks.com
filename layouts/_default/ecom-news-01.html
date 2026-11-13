@@ -140,6 +140,13 @@ a:hover{text-decoration:none}
 .byline .av{display:none}
 .byline .author{font-size:15px;font-weight:600;color:var(--ink);line-height:1.35}
 .byline .author::before{content:"By ";font-weight:400}
+/* the "By" word follows the page's htmlLang (:lang also matches de-CH, de-AT, nl-BE…) */
+.byline .author:lang(de)::before{content:"Von "}
+.byline .author:lang(fr)::before{content:"Par "}
+.byline .author:lang(nl)::before{content:"Door "}
+.byline .author:lang(da)::before{content:"Af "}
+.byline .author:lang(no)::before,.byline .author:lang(nb)::before,.byline .author:lang(sv)::before{content:"Av "}
+.byline .author:lang(es)::before{content:"Por "}
 .byline .section{font-size:13px;color:var(--ink-meta);line-height:1.5;margin-top:2px}
 .byline .stars{font-size:13px;color:var(--ink-meta)}
 .byline .stars .s{color:#b8860b;letter-spacing:.05em}

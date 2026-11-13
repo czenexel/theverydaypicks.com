@@ -165,7 +165,7 @@ So why isn't it sold in regular department stores?
 
 ### The manufacturer is currently running a major promotion to get these boards into more Australian homes.
 
-- **The Offer:** Up to **70% OFF** your Katori board — the price drops to just **$59.90 AUD** (regularly $195).
+- **The Offer:** Up to **70% OFF** your Katori board — the price drops to just **$59** (regularly $118).
 - **The Deadline:** This offer is only valid while stocks last. Because titanium takes a long time to forge and laser-cut, restocks take a long time.
 - **The Guarantee:** Every order comes with a **30-day money-back guarantee**. If you're not blown away by how easily it cleans, just send it back for a full refund. No questions asked.
 
